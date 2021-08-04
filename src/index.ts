@@ -1,5 +1,4 @@
 /**
  * hello.
  */
-export const hello = (name: string): string =>
-  `hello ${name} by qratch`
+export const hello = (name: string): string => `hello ${name} by qratch`
