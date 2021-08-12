@@ -170,7 +170,7 @@ export interface Renderable extends Component {
    * @param y y position.
    * @param font font.
    * @param size size.
-   * @param align align.
+   * @param textAlign align.
    * @param style style.
    */
   fillText(
@@ -179,7 +179,7 @@ export interface Renderable extends Component {
     y: number,
     font: string,
     size: number,
-    align: RenderTextAlign,
+    textAlign: RenderTextAlign,
     style: RenderStyle
   ): void
   /**
@@ -190,7 +190,7 @@ export interface Renderable extends Component {
    * @param y y position.
    * @param font font.
    * @param size size.
-   * @param align align.
+   * @param textAlign align.
    * @param innerLineWidth inner line width.
    * @param outerLineWidth outer line width.
    * @param style style.
@@ -201,7 +201,7 @@ export interface Renderable extends Component {
     y: number,
     font: string,
     size: number,
-    align: RenderTextAlign,
+    textAlign: RenderTextAlign,
     innerLineWidth: number,
     outerLineWidth: number,
     style: RenderStyle
