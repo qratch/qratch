@@ -151,7 +151,7 @@ export interface Renderable extends Component {
    * @param offsetAngle offset angle.
    * @param style style.
    */
-  strokePlygon(
+  strokePolygon(
     x: number,
     y: number,
     radius: number,
