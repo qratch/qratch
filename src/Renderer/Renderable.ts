@@ -1,4 +1,5 @@
 import { Component } from '@/Component/Component'
+import { RenderImage } from './RenderImage'
 import { RenderLineCap } from './RenderLineCap'
 import { RenderStyle } from './RenderStyle'
 import { RenderTextAlign } from './RenderTextAlign'
@@ -182,6 +183,7 @@ export interface Renderable extends Component {
     textAlign: RenderTextAlign,
     style: RenderStyle
   ): void
+
   /**
    * draw filled text.
    *
@@ -205,5 +207,22 @@ export interface Renderable extends Component {
     innerLineWidth: number,
     outerLineWidth: number,
     style: RenderStyle
+  ): void
+
+  /**
+   * draw image.
+   *
+   * @param image image to draw.
+   * @param x position.
+   * @param y position.
+   * @param width width.
+   * @param height height.
+   */
+  img(
+    image: RenderImage,
+    x: number,
+    y: number,
+    width?: number,
+    height?: number
   ): void
 }
