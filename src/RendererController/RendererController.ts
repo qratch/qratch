@@ -1,20 +1,19 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { isFontable } from '@/Font/isFontable'
 import { isPointable } from '@/Pointable/isPointable'
+import { isRenderImage } from '@/Renderer/isRenderImage'
 import { Renderable } from '@/Renderer/Renderable'
 import { RenderLineCap } from '@/Renderer/RenderLineCap'
 import { RenderStyle } from '@/Renderer/RenderStyle'
 import { RenderTextAlign } from '@/Renderer/RenderTextAlign'
 import { isSizeable } from '@/Size/isPointable'
-import { RendererControllable } from './RendererControllable'
 
 /**
  * RendererController class.
  */
-export class RendererController implements RendererControllable {
-  constructor(public readonly renderer: Renderable) {}
+export class RendererController {
+  constructor(protected readonly renderer: Renderable) {}
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
   fillRect(...args: any[]) {
     if (
       isPointable(args[0]) &&
@@ -78,6 +77,7 @@ export class RendererController implements RendererControllable {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
   strokeRect(...args: any[]) {
     if (
       isPointable(args[0]) &&
@@ -157,6 +157,7 @@ export class RendererController implements RendererControllable {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
   line(...args: any[]) {
     if (
       isPointable(args[0]) &&
@@ -236,6 +237,7 @@ export class RendererController implements RendererControllable {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
   fillArc(...args: any[]) {
     if (
       isPointable(args[0]) &&
@@ -278,6 +280,7 @@ export class RendererController implements RendererControllable {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
   strokeArc(...args: any[]) {
     if (
       isPointable(args[0]) &&
@@ -328,6 +331,7 @@ export class RendererController implements RendererControllable {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
   fillPolygon(...args: any[]) {
     if (
       isPointable(args[0]) &&
@@ -366,6 +370,7 @@ export class RendererController implements RendererControllable {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
   strokePolygon(...args: any[]) {
     if (
       isPointable(args[0]) &&
@@ -412,6 +417,7 @@ export class RendererController implements RendererControllable {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
   fillText(...args: any[]) {
     if (
       typeof args[0] === 'string' &&
@@ -491,6 +497,7 @@ export class RendererController implements RendererControllable {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
   strokeText(...args: any[]) {
     if (
       typeof args[0] === 'string' &&
@@ -582,6 +589,54 @@ export class RendererController implements RendererControllable {
         args[7],
         args[8] as RenderStyle
       )
+      return
+    }
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
+  img(...args: any[]) {
+    if (isRenderImage(args[0]) && isPointable(args[1]) && isSizeable(args[2])) {
+      this.renderer.img(
+        args[0],
+        args[1].x,
+        args[1].y,
+        args[2].width,
+        args[2].height
+      )
+      return
+    }
+    if (
+      isRenderImage(args[0]) &&
+      isPointable(args[1]) &&
+      typeof args[2] === 'number' &&
+      typeof args[3] === 'number'
+    ) {
+      this.renderer.img(args[0], args[1].x, args[1].y, args[2], args[3])
+      return
+    }
+    if (
+      isRenderImage(args[0]) &&
+      typeof args[1] === 'number' &&
+      typeof args[2] === 'number' &&
+      isSizeable(args[3])
+    ) {
+      this.renderer.img(
+        args[0],
+        args[1],
+        args[2],
+        args[3].width,
+        args[3].height
+      )
+      return
+    }
+    if (
+      isRenderImage(args[0]) &&
+      typeof args[1] === 'number' &&
+      typeof args[2] === 'number' &&
+      typeof args[3] === 'number' &&
+      typeof args[4] === 'number'
+    ) {
+      this.renderer.img(args[0], args[1], args[2], args[3], args[4])
       return
     }
   }
