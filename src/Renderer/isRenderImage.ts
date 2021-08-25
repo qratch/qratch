@@ -7,7 +7,7 @@
 import { RenderImage } from './RenderImage'
 
 // eslint-disable-next-line
-export const isPointable = (value: any): value is RenderImage => {
+export const isRenderImage = (value: any): value is RenderImage => {
   if (
     value instanceof Image ||
     value instanceof HTMLCanvasElement ||

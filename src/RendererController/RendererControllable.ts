@@ -1,5 +1,6 @@
 import { Fontable } from '@/Font/Fontable'
 import { Pointable } from '@/Pointable/Pointable'
+import { RenderImage } from '@/Renderer/RenderImage'
 import { RenderLineCap } from '@/Renderer/RenderLineCap'
 import { RenderStyle } from '@/Renderer/RenderStyle'
 import { RenderTextAlign } from '@/Renderer/RenderTextAlign'
@@ -546,5 +547,51 @@ export interface RendererControllable {
     innerLineWidth: number,
     outerLineWidth: number,
     style: RenderStyle
+  ): void
+
+  /**
+   * draw image.
+   *
+   * @param img img.
+   * @param pos pos.
+   * @param size size.
+   */
+  img(img: RenderImage, pos: Pointable, size?: Sizeable): void
+
+  /**
+   * draw image.
+   *
+   * @param img img.
+   * @param pos pos.
+   * @param width width.
+   * @param height height.
+   */
+  img(img: RenderImage, pos: Pointable, width?: number, height?: number): void
+
+  /**
+   * draw image.
+   *
+   * @param img img.
+   * @param x x.
+   * @param y y.
+   * @param size size.
+   */
+  img(img: RenderImage, x: number, y: number, size?: Sizeable): void
+
+  /**
+   * draw image.
+   *
+   * @param img img.
+   * @param x x.
+   * @param y y.
+   * @param width width.
+   * @param height height.
+   */
+  img(
+    img: RenderImage,
+    x: number,
+    y: number,
+    width?: number,
+    height?: number
   ): void
 }
