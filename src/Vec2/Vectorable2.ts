@@ -5,204 +5,200 @@ import { Pointable } from '@/Pointable/Pointable'
  */
 export interface Vectorable2 extends Pointable {
   /**
-   * set the given numeric value to x and y.
+   * set the given elements to its own elements and returns this.
    *
-   * @param value numeric value.
+   * @param pos pos.
    */
-  set(value: number): this
+  set(pos: Pointable): void
 
   /**
-   * set the given x and given y to x and y.
+   * set the given elements to its own elements and returns this.
    *
-   * @param x value to add to x.
-   * @param y value to add to y.
+   * @param x x.
+   * @param y y.
    */
-  set(x: number, y: number): this
+  set(x: number, y: number): void
 
   /**
-   * set the given points x and y to x and y.
+   * set the given elements to its own elements and returns this.
    *
-   * @param pointable pointable value.
+   * @param value value.
    */
-  set(pointable: Pointable): this
+  set(value: number): void
 
   /**
-   * add the given numeric value to x and y.
+   * add the given elements to its own elements and returns this.
    *
-   * @param value numeric value.
+   * @param pos pos.
    */
-  add(value: number): this
+  add(pos: Pointable): void
 
   /**
-   * add the given x and given y to x and y.
+   * add the given elements to its own elements and returns this.
    *
-   * @param x value to add to x.
-   * @param y value to add to y.
+   * @param x x.
+   * @param y y.
    */
-  add(x: number, y: number): this
+  add(x: number, y: number): void
 
   /**
-   * add the given points x and y to x and y.
+   * add the given elements to its own elements and returns this.
    *
-   * @param pointable pointable value.
+   * @param value value.
    */
-  add(pointable: Pointable): this
+  add(value: number): void
 
   /**
-   * subtract the given numeric value to x and y.
+   * subtract the given elements to its own elements and returns this.
    *
-   * @param value numeric value.
+   * @param pos pos.
    */
-  sub(value: number): this
+  sub(pos: Pointable): void
 
   /**
-   * subtract the given x and given y to x and y.
+   * subtract the given elements to its own elements and returns this.
    *
-   * @param x value to add to x.
-   * @param y value to add to y.
+   * @param x x.
+   * @param y y.
    */
-  sub(x: number, y: number): this
+  sub(x: number, y: number): void
 
   /**
-   * subtract the given points x and y to x and y.
+   * subtract the given elements to its own elements and returns this.
    *
-   * @param pointable pointable value.
+   * @param value value.
    */
-  sub(pointable: Pointable): this
+  sub(value: number): void
 
   /**
-   * multiply the given numeric value to x and y.
+   * mutiply the given elements to its own elements and returns this.
    *
-   * @param value numeric value.
+   * @param pos pos.
    */
-  mul(value: number): this
+  mul(pos: Pointable): void
 
   /**
-   * multiply the given x and given y to x and y.
+   * mutiply the given elements to its own elements and returns this.
    *
-   * @param x value to add to x.
-   * @param y value to add to y.
+   * @param x x.
+   * @param y y.
    */
-  mul(x: number, y: number): this
+  mul(x: number, y: number): void
 
   /**
-   * multiply the given points x and y to x and y.
+   * mutiply the given elements to its own elements and returns this.
    *
-   * @param pointable pointable value.
+   * @param value value.
    */
-  mul(pointable: Pointable): this
+  mul(value: number): void
 
   /**
-   * division the given numeric value to x and y.
+   * division the given elements to its own elements and returns this.
    *
-   * @param value numeric value.
+   * @param pos pos.
    */
-  div(value: number): this
+  div(pos: Pointable): void
 
   /**
-   * division the given x and given y to x and y.
+   * division the given elements to its own elements and returns this.
    *
-   * @param x value to add to x.
-   * @param y value to add to y.
+   * @param x x.
+   * @param y y.
    */
-  div(x: number, y: number): this
+  div(x: number, y: number): void
 
   /**
-   * division the given points x and y to x and y.
+   * division the given elements to its own elements and returns this.
    *
-   * @param pointable pointable value.
+   * @param value value.
    */
-  div(pointable: Pointable): this
+  div(value: number): void
 
   /**
    * returns a vector with the given numeric value added to x and y.
    *
-   * @param value numeric value.
+   * @param pos pos.
    */
-  getAdd(value: number): Vectorable2
+  getAdd(pos: Pointable): void
 
   /**
-   * returns a vector with given x and given y added to x and y.
+   * returns a vector with the given numeric value added to x and y.
    *
-   * @param x value to add to x.
-   * @param y value to add to y.
+   * @param x x.
+   * @param y y.
    */
-  getAdd(x: number, y: number): Vectorable2
+  getAdd(x: number, y: number): void
 
   /**
-   * returns a vector with given pointable added to x and y.
+   * returns a vector with the given numeric value added to x and y.
    *
-   * @param x value to add to x.
-   * @param y value to add to y.
+   * @param value value.
    */
-  getAdd(pointable: Pointable): Vectorable2
+  getAdd(value: number): void
 
   /**
    * returns a vector with the given numeric value subtracted to x and y.
    *
-   * @param value numeric value.
+   * @param pos pos.
    */
-  getSub(value: number): Vectorable2
+  getSub(pos: Pointable): void
 
   /**
-   * returns a vector with given x and given y subtracted to x and y.
+   * returns a vector with the given numeric value subtracted to x and y.
    *
-   * @param x value to add to x.
-   * @param y value to add to y.
+   * @param x x.
+   * @param y y.
    */
-  getSub(x: number, y: number): Vectorable2
+  getSub(x: number, y: number): void
 
   /**
-   * returns a vector with given pointable subtracted to x and y.
+   * returns a vector with the given numeric value subtracted to x and y.
    *
-   * @param x value to add to x.
-   * @param y value to add to y.
+   * @param value value.
    */
-  getSub(pointable: Pointable): Vectorable2
+  getSub(value: number): void
 
   /**
-   * returns a vector with the given numeric value multiply to x and y.
+   * returns a vector with the given numeric value multiplied to x and y.
    *
-   * @param value numeric value.
+   * @param pos pos.
    */
-  getMul(value: number): Vectorable2
+  getMul(pos: Pointable): void
 
   /**
-   * returns a vector with given x and given y multiply to x and y.
+   * returns a vector with the given numeric value multiplied to x and y.
    *
-   * @param x value to add to x.
-   * @param y value to add to y.
+   * @param x x.
+   * @param y y.
    */
-  getMul(x: number, y: number): Vectorable2
+  getMul(x: number, y: number): void
 
   /**
-   * returns a vector with given pointable multiply to x and y.
+   * returns a vector with the given numeric value multiplied to x and y.
    *
-   * @param x value to add to x.
-   * @param y value to add to y.
+   * @param value value.
    */
-  getMul(pointable: Pointable): Vectorable2
+  getMul(value: number): void
 
   /**
-   * returns a vector with the given numeric value division to x and y.
+   * returns a vector with the given numeric value divisioned to x and y.
    *
-   * @param value numeric value.
+   * @param pos pos.
    */
-  getDiv(value: number): Vectorable2
+  getDiv(pos: Pointable): void
 
   /**
-   * returns a vector with given x and given y division to x and y.
+   * returns a vector with the given numeric value divisioned to x and y.
    *
-   * @param x value to add to x.
-   * @param y value to add to y.
+   * @param x x.
+   * @param y y.
    */
-  getDiv(x: number, y: number): Vectorable2
+  getDiv(x: number, y: number): void
 
   /**
-   * returns a vector with given pointable division to x and y.
+   * returns a vector with the given numeric value divisioned to x and y.
    *
-   * @param x value to add to x.
-   * @param y value to add to y.
+   * @param value value.
    */
-  getDiv(pointable: Pointable): Vectorable2
+  getDiv(value: number): void
 }
