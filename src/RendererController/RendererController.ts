@@ -5,7 +5,7 @@ import { Renderable } from '@/Renderer/Renderable'
 import { RenderLineCap } from '@/Renderer/RenderLineCap'
 import { RenderStyle } from '@/Renderer/RenderStyle'
 import { RenderTextAlign } from '@/Renderer/RenderTextAlign'
-import { isSizeable } from '@/Size/isPointable'
+import { isSizeable } from '@/Size/isSizeable'
 
 /**
  * RendererController class.
