@@ -1,5 +1,6 @@
 import { Renderable } from '@/Renderer/Renderable'
 import { RenderLineCap } from '@/Renderer/RenderLineCap'
+import { RenderPolygonPoint } from '@/Renderer/RenderPolygonPoint'
 import { RenderTextAlign } from '@/Renderer/RenderTextAlign'
 
 /**
@@ -117,27 +118,34 @@ export class CanvasRenderer implements Renderable {
     this.context.arc(x, y, radius, startAngle, endAngle, anticlockwise)
   }
 
-  fillPolygon(
-    x: number,
-    y: number,
-    radius: number,
-    corners: number,
-    offsetAngle: number,
-    style: string
-  ): void {
-    throw new Error('Method not implemented.')
+  fillPolygon(points: RenderPolygonPoint[], style: string): void {
+    this.context.fillStyle = style
+
+    this.polygon(points)
+    this.context.fill()
   }
 
   strokePolygon(
-    x: number,
-    y: number,
-    radius: number,
-    corners: number,
-    offsetAngle: number,
+    points: RenderPolygonPoint[],
     lineWidth: number,
     style: string
   ): void {
-    throw new Error('Method not implemented.')
+    this.context.lineWidth = lineWidth
+    this.context.fillStyle = style
+
+    this.polygon(points)
+    this.context.fill()
+  }
+
+  private polygon([first, ...points]: RenderPolygonPoint[]) {
+    this.context.beginPath()
+    this.context.moveTo(first[0], first[1])
+
+    for (const point of points) {
+      this.context.moveTo(point[0], point[1])
+    }
+
+    this.context.closePath()
   }
 
   fillText(
@@ -149,7 +157,9 @@ export class CanvasRenderer implements Renderable {
     textAlign: RenderTextAlign,
     style: string
   ): void {
-    throw new Error('Method not implemented.')
+    this.context.fillStyle = style
+    this.context.textAlign = textAlign
+    this.context.font = `${font} ${size}px`
   }
 
   strokeText(
