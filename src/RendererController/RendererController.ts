@@ -27,7 +27,6 @@ export class RendererController {
         args[1].height,
         args[2] as RenderStyle
       )
-      return
     }
     if (
       isPointable(args[0]) &&
@@ -42,7 +41,6 @@ export class RendererController {
         args[2],
         args[3] as RenderStyle
       )
-      return
     }
     if (
       typeof args[0] === 'number' &&
@@ -57,7 +55,6 @@ export class RendererController {
         args[2].height,
         args[3] as RenderStyle
       )
-      return
     }
     if (
       typeof args[0] === 'number' &&
@@ -73,8 +70,9 @@ export class RendererController {
         args[3],
         args[4] as RenderStyle
       )
-      return
     }
+
+    throw new TypeError(this.constructor.name + '.fillRect: invalid arguments.')
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
@@ -83,8 +81,7 @@ export class RendererController {
       isPointable(args[0]) &&
       isSizeable(args[1]) &&
       typeof args[2] === 'number' &&
-      typeof args[3] === 'number' &&
-      typeof args[4] === 'string'
+      typeof args[3] === 'string'
     ) {
       this.renderer.strokeRect(
         args[0].x,
@@ -92,18 +89,15 @@ export class RendererController {
         args[1].width,
         args[1].height,
         args[2],
-        args[3],
-        args[4] as RenderStyle
+        args[3] as RenderStyle
       )
-      return
     }
     if (
       isPointable(args[0]) &&
       typeof args[1] === 'number' &&
       typeof args[2] === 'number' &&
       typeof args[3] === 'number' &&
-      typeof args[4] === 'number' &&
-      typeof args[5] === 'string'
+      typeof args[4] === 'string'
     ) {
       this.renderer.strokeRect(
         args[0].x,
@@ -111,18 +105,15 @@ export class RendererController {
         args[1],
         args[2],
         args[3],
-        args[4],
-        args[5] as RenderStyle
+        args[4] as RenderStyle
       )
-      return
     }
     if (
       typeof args[0] === 'number' &&
       typeof args[1] === 'number' &&
       isSizeable(args[2]) &&
       typeof args[3] === 'number' &&
-      typeof args[4] === 'number' &&
-      typeof args[5] === 'string'
+      typeof args[4] === 'string'
     ) {
       this.renderer.strokeRect(
         args[0],
@@ -130,10 +121,8 @@ export class RendererController {
         args[2].width,
         args[2].height,
         args[3],
-        args[4],
-        args[5] as RenderStyle
+        args[4] as RenderStyle
       )
-      return
     }
     if (
       typeof args[0] === 'number' &&
@@ -141,8 +130,7 @@ export class RendererController {
       typeof args[2] === 'number' &&
       typeof args[3] === 'number' &&
       typeof args[4] === 'number' &&
-      typeof args[5] === 'number' &&
-      typeof args[6] === 'string'
+      typeof args[5] === 'string'
     ) {
       this.renderer.strokeRect(
         args[0],
@@ -150,11 +138,13 @@ export class RendererController {
         args[2],
         args[3],
         args[4],
-        args[5],
-        args[6] as RenderStyle
+        args[5] as RenderStyle
       )
-      return
     }
+
+    throw new TypeError(
+      this.constructor.name + '.strokeRect: invalid arguments.'
+    )
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
@@ -162,8 +152,8 @@ export class RendererController {
     if (
       isPointable(args[0]) &&
       isPointable(args[1]) &&
-      typeof args[2] === 'string' &&
-      typeof args[3] === 'number' &&
+      typeof args[2] === 'number' &&
+      typeof args[3] === 'string' &&
       typeof args[4] === 'string'
     ) {
       this.renderer.line(
@@ -171,18 +161,17 @@ export class RendererController {
         args[0].y,
         args[1].x,
         args[1].y,
-        args[2] as RenderStyle,
-        args[3],
-        args[4] as RenderLineCap
+        args[2],
+        args[3] as RenderLineCap,
+        args[4] as RenderStyle
       )
-      return
     }
     if (
       isPointable(args[0]) &&
       typeof args[1] === 'number' &&
       typeof args[2] === 'number' &&
-      typeof args[3] === 'string' &&
-      typeof args[4] === 'number' &&
+      typeof args[3] === 'number' &&
+      typeof args[4] === 'string' &&
       typeof args[5] === 'string'
     ) {
       this.renderer.line(
@@ -190,18 +179,17 @@ export class RendererController {
         args[0].y,
         args[1],
         args[2],
-        args[3] as RenderStyle,
-        args[4],
-        args[5] as RenderLineCap
+        args[3],
+        args[4] as RenderLineCap,
+        args[5] as RenderStyle
       )
-      return
     }
     if (
       typeof args[0] === 'number' &&
       typeof args[1] === 'number' &&
       isPointable(args[2]) &&
-      typeof args[3] === 'string' &&
-      typeof args[4] === 'number' &&
+      typeof args[3] === 'number' &&
+      typeof args[4] === 'string' &&
       typeof args[5] === 'string'
     ) {
       this.renderer.line(
@@ -209,19 +197,18 @@ export class RendererController {
         args[1],
         args[2].x,
         args[2].y,
-        args[3] as RenderStyle,
-        args[4],
-        args[5] as RenderLineCap
+        args[3],
+        args[4] as RenderLineCap,
+        args[5] as RenderStyle
       )
-      return
     }
     if (
       typeof args[0] === 'number' &&
       typeof args[1] === 'number' &&
       typeof args[2] === 'number' &&
       typeof args[3] === 'number' &&
-      typeof args[4] === 'string' &&
-      typeof args[5] === 'number' &&
+      typeof args[4] === 'number' &&
+      typeof args[5] === 'string' &&
       typeof args[6] === 'string'
     ) {
       this.renderer.line(
@@ -229,12 +216,13 @@ export class RendererController {
         args[1],
         args[2],
         args[3],
-        args[4] as RenderStyle,
-        args[5],
-        args[6] as RenderLineCap
+        args[4],
+        args[5] as RenderLineCap,
+        args[6] as RenderStyle
       )
-      return
     }
+
+    throw new TypeError(this.constructor.name + '.line: invalid arguments.')
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
@@ -244,8 +232,8 @@ export class RendererController {
       typeof args[1] === 'number' &&
       typeof args[2] === 'number' &&
       typeof args[3] === 'number' &&
-      typeof args[4] === 'boolean' &&
-      typeof args[5] === 'string'
+      typeof args[4] === 'string' &&
+      typeof args[5] === 'boolean'
     ) {
       this.renderer.fillArc(
         args[0].x,
@@ -253,10 +241,9 @@ export class RendererController {
         args[1],
         args[2],
         args[3],
-        args[4],
-        args[5] as RenderStyle
+        args[4] as RenderStyle,
+        args[5]
       )
-      return
     }
     if (
       typeof args[0] === 'number' &&
@@ -264,8 +251,8 @@ export class RendererController {
       typeof args[2] === 'number' &&
       typeof args[3] === 'number' &&
       typeof args[4] === 'number' &&
-      typeof args[5] === 'boolean' &&
-      typeof args[6] === 'string'
+      typeof args[5] === 'string' &&
+      typeof args[6] === 'boolean'
     ) {
       this.renderer.fillArc(
         args[0],
@@ -273,11 +260,12 @@ export class RendererController {
         args[2],
         args[3],
         args[4],
-        args[5],
-        args[6] as RenderStyle
+        args[5] as RenderStyle,
+        args[6]
       )
-      return
     }
+
+    throw new TypeError(this.constructor.name + '.fillArc: invalid arguments.')
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
@@ -287,10 +275,9 @@ export class RendererController {
       typeof args[1] === 'number' &&
       typeof args[2] === 'number' &&
       typeof args[3] === 'number' &&
-      typeof args[4] === 'boolean' &&
-      typeof args[5] === 'number' &&
-      typeof args[6] === 'number' &&
-      typeof args[7] === 'string'
+      typeof args[4] === 'number' &&
+      typeof args[5] === 'string' &&
+      typeof args[6] === 'boolean'
     ) {
       this.renderer.strokeArc(
         args[0].x,
@@ -299,11 +286,9 @@ export class RendererController {
         args[2],
         args[3],
         args[4],
-        args[5],
-        args[6],
-        args[7] as RenderStyle
+        args[5] as RenderStyle,
+        args[6]
       )
-      return
     }
     if (
       typeof args[0] === 'number' &&
@@ -311,12 +296,119 @@ export class RendererController {
       typeof args[2] === 'number' &&
       typeof args[3] === 'number' &&
       typeof args[4] === 'number' &&
-      typeof args[5] === 'boolean' &&
-      typeof args[6] === 'number' &&
-      typeof args[7] === 'number' &&
-      typeof args[8] === 'string'
+      typeof args[5] === 'number' &&
+      typeof args[6] === 'string' &&
+      typeof args[7] === 'boolean'
     ) {
       this.renderer.strokeArc(
+        args[0],
+        args[1],
+        args[2],
+        args[3],
+        args[4],
+        args[5],
+        args[6] as RenderStyle,
+        args[7]
+      )
+    }
+
+    throw new TypeError(
+      this.constructor.name + '.strokeArc: invalid arguments.'
+    )
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
+  fillEllipse(...args: any[]) {
+    if (
+      isPointable(args[0]) &&
+      typeof args[1] === 'number' &&
+      typeof args[2] === 'number' &&
+      typeof args[3] === 'number' &&
+      typeof args[4] === 'number' &&
+      typeof args[5] === 'number' &&
+      typeof args[6] === 'string' &&
+      typeof args[7] === 'boolean'
+    ) {
+      this.renderer.fillEllipse(
+        args[0].x,
+        args[0].y,
+        args[1],
+        args[2],
+        args[3],
+        args[4],
+        args[5],
+        args[6] as RenderStyle,
+        args[7]
+      )
+    }
+    if (
+      typeof args[0] === 'number' &&
+      typeof args[1] === 'number' &&
+      typeof args[2] === 'number' &&
+      typeof args[3] === 'number' &&
+      typeof args[4] === 'number' &&
+      typeof args[5] === 'number' &&
+      typeof args[6] === 'number' &&
+      typeof args[7] === 'string' &&
+      typeof args[8] === 'boolean'
+    ) {
+      this.renderer.fillEllipse(
+        args[0],
+        args[1],
+        args[2],
+        args[3],
+        args[4],
+        args[5],
+        args[6],
+        args[7] as RenderStyle,
+        args[8]
+      )
+    }
+
+    throw new TypeError(
+      this.constructor.name + '.fillEllipse: invalid arguments.'
+    )
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
+  strokeEllipse(...args: any[]) {
+    if (
+      isPointable(args[0]) &&
+      typeof args[1] === 'number' &&
+      typeof args[2] === 'number' &&
+      typeof args[3] === 'number' &&
+      typeof args[4] === 'number' &&
+      typeof args[5] === 'number' &&
+      typeof args[6] === 'number' &&
+      typeof args[7] === 'string' &&
+      typeof args[8] === 'boolean'
+    ) {
+      this.renderer.strokeEllipse(
+        args[0].x,
+        args[0].y,
+        args[1],
+        args[2],
+        args[3],
+        args[4],
+        args[5],
+        args[6],
+        args[7] as RenderStyle,
+        args[8]
+      )
+    }
+    if (
+      typeof args[0] === 'number' &&
+      typeof args[1] === 'number' &&
+      typeof args[2] === 'number' &&
+      typeof args[3] === 'number' &&
+      typeof args[4] === 'number' &&
+      typeof args[5] === 'number' &&
+      typeof args[6] === 'number' &&
+      typeof args[7] === 'number' &&
+      typeof args[8] === 'string' &&
+      typeof args[9] === 'boolean'
+    ) {
+      this.renderer.strokeEllipse(
         args[0],
         args[1],
         args[2],
@@ -325,96 +417,47 @@ export class RendererController {
         args[5],
         args[6],
         args[7],
-        args[8] as RenderStyle
+        args[8] as RenderStyle,
+        args[9]
       )
-      return
     }
+
+    throw new TypeError(
+      this.constructor.name + '.strokeEllipse: invalid arguments.'
+    )
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
   fillPolygon(...args: any[]) {
-    if (
-      isPointable(args[0]) &&
-      typeof args[1] === 'number' &&
-      typeof args[2] === 'number' &&
-      typeof args[3] === 'number' &&
-      typeof args[4] === 'string'
-    ) {
+    if (Array.isArray(args[0]) && typeof args[1] === 'string') {
       this.renderer.fillPolygon(
-        args[0].x,
-        args[0].y,
-        args[1],
-        args[2],
-        args[3],
-        args[4] as RenderStyle
+        args[0].map((v) => (isPointable(v) ? [v.x, v.y] : v)),
+        args[1] as RenderStyle
       )
-      return
     }
-    if (
-      typeof args[0] === 'number' &&
-      typeof args[1] === 'number' &&
-      typeof args[2] === 'number' &&
-      typeof args[3] === 'number' &&
-      typeof args[4] === 'number' &&
-      typeof args[5] === 'string'
-    ) {
-      this.renderer.fillPolygon(
-        args[0],
-        args[1],
-        args[2],
-        args[3],
-        args[4],
-        args[5] as RenderStyle
-      )
-      return
-    }
+
+    throw new TypeError(
+      this.constructor.name + '.fillPolygon: invalid arguments.'
+    )
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
   strokePolygon(...args: any[]) {
     if (
-      isPointable(args[0]) &&
+      Array.isArray(args[0]) &&
       typeof args[1] === 'number' &&
-      typeof args[2] === 'number' &&
-      typeof args[3] === 'number' &&
-      typeof args[4] === 'number' &&
-      typeof args[5] === 'number' &&
-      typeof args[6] === 'string'
+      typeof args[2] === 'string'
     ) {
       this.renderer.strokePolygon(
-        args[0].x,
-        args[0].y,
+        args[0].map((v) => (isPointable(v) ? [v.x, v.y] : v)),
         args[1],
-        args[2],
-        args[3],
-        args[4],
-        args[5],
-        args[6] as RenderStyle
+        args[2] as RenderStyle
       )
-      return
     }
-    if (
-      typeof args[0] === 'number' &&
-      typeof args[1] === 'number' &&
-      typeof args[2] === 'number' &&
-      typeof args[3] === 'number' &&
-      typeof args[4] === 'number' &&
-      typeof args[5] === 'number' &&
-      typeof args[6] === 'number' &&
-      typeof args[7] === 'string'
-    ) {
-      this.renderer.strokePolygon(
-        args[0],
-        args[1],
-        args[2],
-        args[3],
-        args[4],
-        args[5],
-        args[6],
-        args[7] as RenderStyle
-      )
-      return
-    }
+
+    throw new TypeError(
+      this.constructor.name + '.strokePolygon: invalid arguments.'
+    )
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
@@ -435,7 +478,6 @@ export class RendererController {
         args[3] as RenderTextAlign,
         args[4] as RenderStyle
       )
-      return
     }
     if (
       typeof args[0] === 'string' &&
@@ -454,7 +496,6 @@ export class RendererController {
         args[4] as RenderTextAlign,
         args[5] as RenderStyle
       )
-      return
     }
     if (
       typeof args[0] === 'string' &&
@@ -473,7 +514,6 @@ export class RendererController {
         args[4] as RenderTextAlign,
         args[5] as RenderStyle
       )
-      return
     }
     if (
       typeof args[0] === 'string' &&
@@ -493,8 +533,9 @@ export class RendererController {
         args[5] as RenderTextAlign,
         args[6] as RenderStyle
       )
-      return
     }
+
+    throw new TypeError(this.constructor.name + '.fillText: invalid arguments.')
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
@@ -505,8 +546,7 @@ export class RendererController {
       isFontable(args[2]) &&
       typeof args[3] === 'string' &&
       typeof args[4] === 'number' &&
-      typeof args[5] === 'number' &&
-      typeof args[6] === 'string'
+      typeof args[5] === 'string'
     ) {
       this.renderer.strokeText(
         args[0],
@@ -516,10 +556,8 @@ export class RendererController {
         args[2].size,
         args[3] as RenderTextAlign,
         args[4],
-        args[5],
-        args[6] as RenderStyle
+        args[5] as RenderStyle
       )
-      return
     }
     if (
       typeof args[0] === 'string' &&
@@ -528,8 +566,7 @@ export class RendererController {
       typeof args[3] === 'number' &&
       typeof args[4] === 'string' &&
       typeof args[5] === 'number' &&
-      typeof args[6] === 'number' &&
-      typeof args[7] === 'string'
+      typeof args[6] === 'string'
     ) {
       this.renderer.strokeText(
         args[0],
@@ -539,10 +576,8 @@ export class RendererController {
         args[3],
         args[4] as RenderTextAlign,
         args[5],
-        args[6],
-        args[7] as RenderStyle
+        args[6] as RenderStyle
       )
-      return
     }
     if (
       typeof args[0] === 'string' &&
@@ -551,8 +586,7 @@ export class RendererController {
       isFontable(args[3]) &&
       typeof args[4] === 'string' &&
       typeof args[5] === 'number' &&
-      typeof args[6] === 'number' &&
-      typeof args[7] === 'string'
+      typeof args[6] === 'string'
     ) {
       this.renderer.strokeText(
         args[0],
@@ -562,10 +596,8 @@ export class RendererController {
         args[3].size,
         args[4] as RenderTextAlign,
         args[5],
-        args[6],
-        args[7] as RenderStyle
+        args[6] as RenderStyle
       )
-      return
     }
     if (
       typeof args[0] === 'string' &&
@@ -575,8 +607,7 @@ export class RendererController {
       typeof args[4] === 'number' &&
       typeof args[5] === 'string' &&
       typeof args[6] === 'number' &&
-      typeof args[7] === 'number' &&
-      typeof args[8] === 'string'
+      typeof args[7] === 'string'
     ) {
       this.renderer.strokeText(
         args[0],
@@ -586,11 +617,13 @@ export class RendererController {
         args[4],
         args[5] as RenderTextAlign,
         args[6],
-        args[7],
-        args[8] as RenderStyle
+        args[7] as RenderStyle
       )
-      return
     }
+
+    throw new TypeError(
+      this.constructor.name + '.strokeText: invalid arguments.'
+    )
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
@@ -603,7 +636,6 @@ export class RendererController {
         args[2].width,
         args[2].height
       )
-      return
     }
     if (
       isRenderImage(args[0]) &&
@@ -612,7 +644,6 @@ export class RendererController {
       typeof args[3] === 'number'
     ) {
       this.renderer.img(args[0], args[1].x, args[1].y, args[2], args[3])
-      return
     }
     if (
       isRenderImage(args[0]) &&
@@ -627,7 +658,6 @@ export class RendererController {
         args[3].width,
         args[3].height
       )
-      return
     }
     if (
       isRenderImage(args[0]) &&
@@ -637,7 +667,8 @@ export class RendererController {
       typeof args[4] === 'number'
     ) {
       this.renderer.img(args[0], args[1], args[2], args[3], args[4])
-      return
     }
+
+    throw new TypeError(this.constructor.name + '.img: invalid arguments.')
   }
 }

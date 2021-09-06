@@ -1,6 +1,7 @@
 import { Component } from '@/Component/Component'
 import { RenderImage } from './RenderImage'
 import { RenderLineCap } from './RenderLineCap'
+import { RenderPolygonPoint } from './RenderPolygonPoint'
 import { RenderStyle } from './RenderStyle'
 import { RenderTextAlign } from './RenderTextAlign'
 
@@ -42,6 +43,7 @@ export interface Renderable extends Component {
    * @param y y position.
    * @param width width.
    * @param height height.
+   * @param lineWidth line width.
    * @param style style.
    */
   strokeRect(
@@ -49,6 +51,7 @@ export interface Renderable extends Component {
     y: number,
     width: number,
     height: number,
+    lineWidth: number,
     style: RenderStyle
   ): void
 
@@ -59,18 +62,18 @@ export interface Renderable extends Component {
    * @param y1 y1 position.
    * @param x2 x2 position.
    * @param y2 y2 position.
-   * @param style style.
    * @param lineWidth line width.
    * @param lineCap line cap.
+   * @param style style.
    */
   line(
     x1: number,
     y1: number,
     x2: number,
     y2: number,
-    style: RenderStyle,
     lineWidth: number,
-    lineCap: RenderLineCap
+    lineCap: RenderLineCap,
+    style: RenderStyle
   ): void
 
   /**
@@ -81,8 +84,8 @@ export interface Renderable extends Component {
    * @param radius radius.
    * @param startAngle start angle.
    * @param endAngle end angle.
-   * @param anticlockwise anticlockwise.
    * @param style style.
+   * @param anticlockwise anticlockwise.
    */
   fillArc(
     x: number,
@@ -90,8 +93,8 @@ export interface Renderable extends Component {
     radius: number,
     startAngle: number,
     endAngle: number,
-    anticlockwise: boolean,
-    style: RenderStyle
+    style: RenderStyle,
+    anticlockwise?: boolean
   ): void
 
   /**
@@ -102,8 +105,9 @@ export interface Renderable extends Component {
    * @param radius radius.
    * @param startAngle start angle.
    * @param endAngle end angle.
-   * @param anticlockwise anticlockwise.
+   * @param lineWidth line width.
    * @param style style.
+   * @param anticlockwise anticlockwise.
    */
   strokeArc(
     x: number,
@@ -111,45 +115,81 @@ export interface Renderable extends Component {
     radius: number,
     startAngle: number,
     endAngle: number,
-    anticlockwise: boolean,
-    style: RenderStyle
+    lineWidth: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
   ): void
 
   /**
-   * draw filled polygon.
+   * draw filled arc.
    *
    * @param x x position.
    * @param y y position.
-   * @param radius radius.
-   * @param corners corners.
-   * @param offsetAngle offset angle.
+   * @param radiusX radius x.
+   * @param radiusY radius y.
+   * @param rotation rotation.
+   * @param startAngle start angle.
+   * @param endAngle end angle.
    * @param style style.
+   * @param anticlockwise anticlockwise.
    */
-  fillPolygon(
+  fillEllipse(
     x: number,
     y: number,
-    radius: number,
-    corners: number,
-    offsetAngle: number,
-    style: RenderStyle
+    radiusX: number,
+    radiusY: number,
+    rotation: number,
+    startAngle: number,
+    endAngle: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
+  ): void
+
+  /**
+   * draw stroked arc.
+   *
+   * @param x x position.
+   * @param y y positionPointable.
+   * @param radiusX radius x.
+   * @param radiusY radius y.
+   * @param rotation rotation.
+   * @param startAngle start angle.
+   * @param endAngle end angle.
+   * @param lineWidth line width.
+   * @param style style.
+   * @param anticlockwise anticlockwise.
+   */
+  strokeEllipse(
+    x: number,
+    y: number,
+    radiusX: number,
+    radiusY: number,
+    rotation: number,
+    startAngle: number,
+    endAngle: number,
+    lineWidth: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
   ): void
 
   /**
    * draw filled polygon.
    *
-   * @param x x position.
-   * @param y y position.
-   * @param radius radius.
-   * @param corners corners.
-   * @param offsetAngle offset angle.
+   * @param points points.
+   * @param style style.
+   */
+  fillPolygon(points: RenderPolygonPoint[], style: RenderStyle): void
+
+  /**
+   * draw filled polygon.
+   *
+   * @param points points.
+   * @param lineWidth line width.
    * @param style style.
    */
   strokePolygon(
-    x: number,
-    y: number,
-    radius: number,
-    corners: number,
-    offsetAngle: number,
+    points: RenderPolygonPoint[],
+    lineWidth: number,
     style: RenderStyle
   ): void
 
@@ -183,8 +223,7 @@ export interface Renderable extends Component {
    * @param font font.
    * @param size size.
    * @param textAlign align.
-   * @param innerLineWidth inner line width.
-   * @param outerLineWidth outer line width.
+   * @param lineWidth line width.
    * @param style style.
    */
   strokeText(
@@ -194,6 +233,7 @@ export interface Renderable extends Component {
     font: string,
     size: number,
     textAlign: RenderTextAlign,
+    lineWidth: number,
     style: RenderStyle
   ): void
 
