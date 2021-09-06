@@ -4,6 +4,7 @@ import { RenderLineCap } from './RenderLineCap'
 import { RenderPolygonPoint } from './RenderPolygonPoint'
 import { RenderStyle } from './RenderStyle'
 import { RenderTextAlign } from './RenderTextAlign'
+import { RenderTextBaseline } from './RenderTextBaseline'
 
 /**
  * Renderable interface.
@@ -199,19 +200,19 @@ export interface Renderable extends Component {
    * @param text text.
    * @param x x position.
    * @param y y position.
-   * @param font font.
-   * @param size size.
-   * @param textAlign align.
    * @param style style.
+   * @param font font.
+   * @param textAlign align.
+   * @param textBaseline baseline.
    */
   fillText(
     text: string,
     x: number,
     y: number,
-    font: string,
-    size: number,
-    textAlign: RenderTextAlign,
-    style: RenderStyle
+    style: RenderStyle,
+    font?: string,
+    textAlign?: RenderTextAlign,
+    textBaseline?: RenderTextBaseline
   ): void
 
   /**
@@ -220,21 +221,19 @@ export interface Renderable extends Component {
    * @param text text.
    * @param x x position.
    * @param y y position.
+   * @param style style.
    * @param font font.
-   * @param size size.
    * @param textAlign align.
    * @param lineWidth line width.
-   * @param style style.
    */
   strokeText(
     text: string,
     x: number,
     y: number,
+    style: RenderStyle,
     font: string,
-    size: number,
     textAlign: RenderTextAlign,
-    lineWidth: number,
-    style: RenderStyle
+    lineWidth: number
   ): void
 
   /**
