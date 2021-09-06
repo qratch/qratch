@@ -42,8 +42,6 @@ export interface Renderable extends Component {
    * @param y y position.
    * @param width width.
    * @param height height.
-   * @param innerLineWidth inner line width.
-   * @param outerLineWidth outer line width.
    * @param style style.
    */
   strokeRect(
@@ -51,8 +49,6 @@ export interface Renderable extends Component {
     y: number,
     width: number,
     height: number,
-    innerLineWidth: number,
-    outerLineWidth: number,
     style: RenderStyle
   ): void
 
@@ -107,8 +103,6 @@ export interface Renderable extends Component {
    * @param startAngle start angle.
    * @param endAngle end angle.
    * @param anticlockwise anticlockwise.
-   * @param innerLineWidth inner line width.
-   * @param outerLineWidth outer line width.
    * @param style style.
    */
   strokeArc(
@@ -118,8 +112,6 @@ export interface Renderable extends Component {
     startAngle: number,
     endAngle: number,
     anticlockwise: boolean,
-    innerLineWidth: number,
-    outerLineWidth: number,
     style: RenderStyle
   ): void
 
@@ -158,8 +150,6 @@ export interface Renderable extends Component {
     radius: number,
     corners: number,
     offsetAngle: number,
-    innerLineWidth: number,
-    outerLineWidth: number,
     style: RenderStyle
   ): void
 
@@ -204,8 +194,6 @@ export interface Renderable extends Component {
     font: string,
     size: number,
     textAlign: RenderTextAlign,
-    innerLineWidth: number,
-    outerLineWidth: number,
     style: RenderStyle
   ): void
 

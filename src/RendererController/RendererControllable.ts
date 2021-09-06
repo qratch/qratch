@@ -66,17 +66,9 @@ export interface RendererControllable {
    *
    * @param pos pos.
    * @param size size.
-   * @param innerLineWidth innerLineWidth.
-   * @param outerLineWidth outerLineWidth.
    * @param style style.
    */
-  strokeRect(
-    pos: Pointable,
-    size: Sizeable,
-    innerLineWidth: number,
-    outerLineWidth: number,
-    style: RenderStyle
-  ): void
+  strokeRect(pos: Pointable, size: Sizeable, style: RenderStyle): void
 
   /**
    * draw stroked rect.
@@ -84,16 +76,12 @@ export interface RendererControllable {
    * @param pos pos.
    * @param width width.
    * @param height height.
-   * @param innerLineWidth innerLineWidth.
-   * @param outerLineWidth outerLineWidth.
    * @param style style.
    */
   strokeRect(
     pos: Pointable,
     width: number,
     height: number,
-    innerLineWidth: number,
-    outerLineWidth: number,
     style: RenderStyle
   ): void
 
@@ -103,18 +91,9 @@ export interface RendererControllable {
    * @param x x.
    * @param y y.
    * @param size size.
-   * @param innerLineWidth innerLineWidth.
-   * @param outerLineWidth outerLineWidth.
    * @param style style.
    */
-  strokeRect(
-    x: number,
-    y: number,
-    size: Sizeable,
-    innerLineWidth: number,
-    outerLineWidth: number,
-    style: RenderStyle
-  ): void
+  strokeRect(x: number, y: number, size: Sizeable, style: RenderStyle): void
 
   /**
    * draw stroked rect.
@@ -123,8 +102,6 @@ export interface RendererControllable {
    * @param y y.
    * @param width width.
    * @param height height.
-   * @param innerLineWidth innerLineWidth.
-   * @param outerLineWidth outerLineWidth.
    * @param style style.
    */
   strokeRect(
@@ -132,8 +109,6 @@ export interface RendererControllable {
     y: number,
     width: number,
     height: number,
-    innerLineWidth: number,
-    outerLineWidth: number,
     style: RenderStyle
   ): void
 
@@ -261,8 +236,6 @@ export interface RendererControllable {
    * @param startAngle startAngle.
    * @param endAngle endAngle.
    * @param anticlockwise anticlockwise.
-   * @param innerLineWidth innerLineWidth.
-   * @param outerLineWidth outerLineWidth.
    * @param style style.
    */
   strokeArc(
@@ -271,8 +244,6 @@ export interface RendererControllable {
     startAngle: number,
     endAngle: number,
     anticlockwise: boolean,
-    innerLineWidth: number,
-    outerLineWidth: number,
     style: RenderStyle
   ): void
 
@@ -285,8 +256,6 @@ export interface RendererControllable {
    * @param startAngle startAngle.
    * @param endAngle endAngle.
    * @param anticlockwise anticlockwise.
-   * @param innerLineWidth innerLineWidth.
-   * @param outerLineWidth outerLineWidth.
    * @param style style.
    */
   strokeArc(
@@ -296,8 +265,6 @@ export interface RendererControllable {
     startAngle: number,
     endAngle: number,
     anticlockwise: boolean,
-    innerLineWidth: number,
-    outerLineWidth: number,
     style: RenderStyle
   ): void
 
@@ -344,8 +311,6 @@ export interface RendererControllable {
    * @param radius radius.
    * @param corners corners.
    * @param startAngle startAngle.
-   * @param innerLineWidth innerLineWidth.
-   * @param outerLineWidth outerLineWidth.
    * @param style style.
    */
   strokePolygon(
@@ -353,8 +318,6 @@ export interface RendererControllable {
     radius: number,
     corners: number,
     startAngle: number,
-    innerLineWidth: number,
-    outerLineWidth: number,
     style: RenderStyle
   ): void
 
@@ -366,8 +329,6 @@ export interface RendererControllable {
    * @param radius radius.
    * @param corners corners.
    * @param startAngle startAngle.
-   * @param innerLineWidth innerLineWidth.
-   * @param outerLineWidth outerLineWidth.
    * @param style style.
    */
   strokePolygon(
@@ -376,8 +337,6 @@ export interface RendererControllable {
     radius: number,
     corners: number,
     startAngle: number,
-    innerLineWidth: number,
-    outerLineWidth: number,
     style: RenderStyle
   ): void
 
@@ -464,8 +423,6 @@ export interface RendererControllable {
    * @param pos pos.
    * @param font font.
    * @param textAlign textAlign.
-   * @param innerLineWidth innerLineWidth.
-   * @param outerLineWidth outerLineWidth.
    * @param style style.
    */
   strokeText(
@@ -473,8 +430,6 @@ export interface RendererControllable {
     pos: Pointable,
     font: Fontable,
     textAlign: RenderTextAlign,
-    innerLineWidth: number,
-    outerLineWidth: number,
     style: RenderStyle
   ): void
 
@@ -486,8 +441,6 @@ export interface RendererControllable {
    * @param font font.
    * @param size size.
    * @param textAlign textAlign.
-   * @param innerLineWidth innerLineWidth.
-   * @param outerLineWidth outerLineWidth.
    * @param style style.
    */
   strokeText(
@@ -496,8 +449,6 @@ export interface RendererControllable {
     font: string,
     size: number,
     textAlign: RenderTextAlign,
-    innerLineWidth: number,
-    outerLineWidth: number,
     style: RenderStyle
   ): void
 
@@ -509,8 +460,6 @@ export interface RendererControllable {
    * @param y y.
    * @param font font.
    * @param textAlign textAlign.
-   * @param innerLineWidth innerLineWidth.
-   * @param outerLineWidth outerLineWidth.
    * @param style style.
    */
   strokeText(
@@ -519,8 +468,6 @@ export interface RendererControllable {
     y: number,
     font: Fontable,
     textAlign: RenderTextAlign,
-    innerLineWidth: number,
-    outerLineWidth: number,
     style: RenderStyle
   ): void
 
@@ -533,8 +480,6 @@ export interface RendererControllable {
    * @param font font.
    * @param size size.
    * @param textAlign textAlign.
-   * @param innerLineWidth innerLineWidth.
-   * @param outerLineWidth outerLineWidth.
    * @param style style.
    */
   strokeText(
@@ -544,8 +489,6 @@ export interface RendererControllable {
     font: string,
     size: number,
     textAlign: RenderTextAlign,
-    innerLineWidth: number,
-    outerLineWidth: number,
     style: RenderStyle
   ): void
 
