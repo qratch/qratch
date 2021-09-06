@@ -16,6 +16,13 @@ export default {
       format: 'esm',
       sourcemap: true,
     },
+    {
+      file: pkg.umd,
+      format: 'umd',
+      name: 'Qratch',
+      moduleName: 'Qratch',
+      sourcemap: true,
+    },
   ],
   plugins: [eslint(), ts()],
   external: [
