@@ -2,6 +2,7 @@ import { Fontable } from '@/Font/Fontable'
 import { Pointable } from '@/Pointable/Pointable'
 import { RenderImage } from '@/Renderer/RenderImage'
 import { RenderLineCap } from '@/Renderer/RenderLineCap'
+import { RenderPolygonPoint } from '@/Renderer/RenderPolygonPoint'
 import { RenderStyle } from '@/Renderer/RenderStyle'
 import { RenderTextAlign } from '@/Renderer/RenderTextAlign'
 import { Sizeable } from '@/Size/Sizeable'
@@ -66,9 +67,15 @@ export interface RendererControllable {
    *
    * @param pos pos.
    * @param size size.
+   * @param lineWidth lineWidth.
    * @param style style.
    */
-  strokeRect(pos: Pointable, size: Sizeable, style: RenderStyle): void
+  strokeRect(
+    pos: Pointable,
+    size: Sizeable,
+    lineWidth: number,
+    style: RenderStyle
+  ): void
 
   /**
    * draw stroked rect.
@@ -76,12 +83,14 @@ export interface RendererControllable {
    * @param pos pos.
    * @param width width.
    * @param height height.
+   * @param lineWidth lineWidth.
    * @param style style.
    */
   strokeRect(
     pos: Pointable,
     width: number,
     height: number,
+    lineWidth: number,
     style: RenderStyle
   ): void
 
@@ -91,9 +100,16 @@ export interface RendererControllable {
    * @param x x.
    * @param y y.
    * @param size size.
+   * @param lineWidth lineWidth.
    * @param style style.
    */
-  strokeRect(x: number, y: number, size: Sizeable, style: RenderStyle): void
+  strokeRect(
+    x: number,
+    y: number,
+    size: Sizeable,
+    lineWidth: number,
+    style: RenderStyle
+  ): void
 
   /**
    * draw stroked rect.
@@ -102,6 +118,7 @@ export interface RendererControllable {
    * @param y y.
    * @param width width.
    * @param height height.
+   * @param lineWidth lineWidth.
    * @param style style.
    */
   strokeRect(
@@ -109,6 +126,7 @@ export interface RendererControllable {
     y: number,
     width: number,
     height: number,
+    lineWidth: number,
     style: RenderStyle
   ): void
 
@@ -117,16 +135,16 @@ export interface RendererControllable {
    *
    * @param p1 p1.
    * @param p2 p2.
-   * @param style style.
    * @param lineWidth lineWidth.
    * @param lineCap lineCap.
+   * @param style style.
    */
   line(
     p1: Pointable,
     p2: Pointable,
-    style: RenderStyle,
     lineWidth: number,
-    lineCap: RenderLineCap
+    lineCap: RenderLineCap,
+    style: RenderStyle
   ): void
 
   /**
@@ -135,17 +153,17 @@ export interface RendererControllable {
    * @param p1 p1.
    * @param x2 x2.
    * @param y2 y2.
-   * @param style style.
    * @param lineWidth lineWidth.
    * @param lineCap lineCap.
+   * @param style style.
    */
   line(
     p1: Pointable,
     x2: number,
     y2: number,
-    style: RenderStyle,
     lineWidth: number,
-    lineCap: RenderLineCap
+    lineCap: RenderLineCap,
+    style: RenderStyle
   ): void
 
   /**
@@ -154,17 +172,17 @@ export interface RendererControllable {
    * @param x1 x1.
    * @param y1 y1.
    * @param p2 p2.
-   * @param style style.
    * @param lineWidth lineWidth.
    * @param lineCap lineCap.
+   * @param style style.
    */
   line(
     x1: number,
     y1: number,
     p2: Pointable,
-    style: RenderStyle,
     lineWidth: number,
-    lineCap: RenderLineCap
+    lineCap: RenderLineCap,
+    style: RenderStyle
   ): void
 
   /**
@@ -174,18 +192,18 @@ export interface RendererControllable {
    * @param y1 y1.
    * @param x2 x2.
    * @param y2 y2.
-   * @param style style.
    * @param lineWidth lineWidth.
    * @param lineCap lineCap.
+   * @param style style.
    */
   line(
     x1: number,
     y1: number,
     x2: number,
     y2: number,
-    style: RenderStyle,
     lineWidth: number,
-    lineCap: RenderLineCap
+    lineCap: RenderLineCap,
+    style: RenderStyle
   ): void
 
   /**
@@ -195,16 +213,16 @@ export interface RendererControllable {
    * @param radius radius.
    * @param startAngle startAngle.
    * @param endAngle endAngle.
-   * @param anticlockwise anticlockwise.
    * @param style style.
+   * @param anticlockwise anticlockwise.
    */
   fillArc(
     pos: Pointable,
     radius: number,
     startAngle: number,
     endAngle: number,
-    anticlockwise: boolean,
-    style: RenderStyle
+    style: RenderStyle,
+    anticlockwise?: boolean
   ): void
 
   /**
@@ -215,8 +233,8 @@ export interface RendererControllable {
    * @param radius radius.
    * @param startAngle startAngle.
    * @param endAngle endAngle.
-   * @param anticlockwise anticlockwise.
    * @param style style.
+   * @param anticlockwise anticlockwise.
    */
   fillArc(
     x: number,
@@ -224,8 +242,8 @@ export interface RendererControllable {
     radius: number,
     startAngle: number,
     endAngle: number,
-    anticlockwise: boolean,
-    style: RenderStyle
+    style: RenderStyle,
+    anticlockwise?: boolean
   ): void
 
   /**
@@ -235,16 +253,18 @@ export interface RendererControllable {
    * @param radius radius.
    * @param startAngle startAngle.
    * @param endAngle endAngle.
-   * @param anticlockwise anticlockwise.
+   * @param lineWidth lineWidth.
    * @param style style.
+   * @param anticlockwise anticlockwise.
    */
   strokeArc(
     pos: Pointable,
     radius: number,
     startAngle: number,
     endAngle: number,
-    anticlockwise: boolean,
-    style: RenderStyle
+    lineWidth: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
   ): void
 
   /**
@@ -255,8 +275,9 @@ export interface RendererControllable {
    * @param radius radius.
    * @param startAngle startAngle.
    * @param endAngle endAngle.
-   * @param anticlockwise anticlockwise.
+   * @param lineWidth lineWidth.
    * @param style style.
+   * @param anticlockwise anticlockwise.
    */
   strokeArc(
     x: number,
@@ -264,79 +285,132 @@ export interface RendererControllable {
     radius: number,
     startAngle: number,
     endAngle: number,
-    anticlockwise: boolean,
-    style: RenderStyle
+    lineWidth: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
   ): void
 
   /**
-   * draw filled polygon.
+   * draw filled arc.
    *
    * @param pos pos.
-   * @param radius radius.
-   * @param corners corners.
+   * @param radiusX radiusX.
+   * @param radiusY radiusY.
+   * @param rotation rotation.
    * @param startAngle startAngle.
+   * @param endAngle endAngle.
    * @param style style.
+   * @param anticlockwise anticlockwise.
    */
-  fillPolygon(
+  fillEllipse(
     pos: Pointable,
-    radius: number,
-    corners: number,
+    radiusX: number,
+    radiusY: number,
+    rotation: number,
     startAngle: number,
-    style: RenderStyle
+    endAngle: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
   ): void
 
   /**
-   * draw filled polygon.
+   * draw filled arc.
    *
    * @param x x.
    * @param y y.
-   * @param radius radius.
-   * @param corners corners.
+   * @param radiusX radiusX.
+   * @param radiusY radiusY.
+   * @param rotation rotation.
    * @param startAngle startAngle.
+   * @param endAngle endAngle.
+   * @param style style.
+   * @param anticlockwise anticlockwise.
+   */
+  fillEllipse(
+    x: number,
+    y: number,
+    radiusX: number,
+    radiusY: number,
+    rotation: number,
+    startAngle: number,
+    endAngle: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
+  ): void
+
+  /**
+   * draw stroked arc.
+   *
+   * @param pos pos.
+   * @param radiusX radiusX.
+   * @param radiusY radiusY.
+   * @param rotation rotation.
+   * @param startAngle startAngle.
+   * @param endAngle endAngle.
+   * @param lineWidth lineWidth.
+   * @param style style.
+   * @param anticlockwise anticlockwise.
+   */
+  strokeEllipse(
+    pos: Pointable,
+    radiusX: number,
+    radiusY: number,
+    rotation: number,
+    startAngle: number,
+    endAngle: number,
+    lineWidth: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
+  ): void
+
+  /**
+   * draw stroked arc.
+   *
+   * @param x x.
+   * @param y y.
+   * @param radiusX radiusX.
+   * @param radiusY radiusY.
+   * @param rotation rotation.
+   * @param startAngle startAngle.
+   * @param endAngle endAngle.
+   * @param lineWidth lineWidth.
+   * @param style style.
+   * @param anticlockwise anticlockwise.
+   */
+  strokeEllipse(
+    x: number,
+    y: number,
+    radiusX: number,
+    radiusY: number,
+    rotation: number,
+    startAngle: number,
+    endAngle: number,
+    lineWidth: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
+  ): void
+
+  /**
+   * draw filled polygon.
+   *
+   * @param points points.
    * @param style style.
    */
   fillPolygon(
-    x: number,
-    y: number,
-    radius: number,
-    corners: number,
-    startAngle: number,
+    points: (RenderPolygonPoint | Pointable)[],
     style: RenderStyle
   ): void
 
   /**
    * draw stroked polygon.
    *
-   * @param pos pos.
-   * @param radius radius.
-   * @param corners corners.
-   * @param startAngle startAngle.
+   * @param points points.
+   * @param lineWidth lineWidth.
    * @param style style.
    */
   strokePolygon(
-    pos: Pointable,
-    radius: number,
-    corners: number,
-    startAngle: number,
-    style: RenderStyle
-  ): void
-
-  /**
-   * draw stroked polygon.
-   *
-   * @param x x.
-   * @param y y.
-   * @param radius radius.
-   * @param corners corners.
-   * @param startAngle startAngle.
-   * @param style style.
-   */
-  strokePolygon(
-    x: number,
-    y: number,
-    radius: number,
-    corners: number,
-    startAngle: number,
+    points: (RenderPolygonPoint | Pointable)[],
+    lineWidth: number,
     style: RenderStyle
   ): void
 
@@ -423,6 +497,7 @@ export interface RendererControllable {
    * @param pos pos.
    * @param font font.
    * @param textAlign textAlign.
+   * @param lineWidth lineWidth.
    * @param style style.
    */
   strokeText(
@@ -430,6 +505,7 @@ export interface RendererControllable {
     pos: Pointable,
     font: Fontable,
     textAlign: RenderTextAlign,
+    lineWidth: number,
     style: RenderStyle
   ): void
 
@@ -441,6 +517,7 @@ export interface RendererControllable {
    * @param font font.
    * @param size size.
    * @param textAlign textAlign.
+   * @param lineWidth lineWidth.
    * @param style style.
    */
   strokeText(
@@ -449,6 +526,7 @@ export interface RendererControllable {
     font: string,
     size: number,
     textAlign: RenderTextAlign,
+    lineWidth: number,
     style: RenderStyle
   ): void
 
@@ -460,6 +538,7 @@ export interface RendererControllable {
    * @param y y.
    * @param font font.
    * @param textAlign textAlign.
+   * @param lineWidth lineWidth.
    * @param style style.
    */
   strokeText(
@@ -468,6 +547,7 @@ export interface RendererControllable {
     y: number,
     font: Fontable,
     textAlign: RenderTextAlign,
+    lineWidth: number,
     style: RenderStyle
   ): void
 
@@ -480,6 +560,7 @@ export interface RendererControllable {
    * @param font font.
    * @param size size.
    * @param textAlign textAlign.
+   * @param lineWidth lineWidth.
    * @param style style.
    */
   strokeText(
@@ -489,6 +570,7 @@ export interface RendererControllable {
     font: string,
     size: number,
     textAlign: RenderTextAlign,
+    lineWidth: number,
     style: RenderStyle
   ): void
 
