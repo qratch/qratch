@@ -8,11 +8,12 @@ import { RenderStyle } from '@/Renderer/RenderStyle'
 import { RenderTextAlign } from '@/Renderer/RenderTextAlign'
 import { RenderTextBaseline } from '@/Renderer/RenderTextBaseline'
 import { isSizeable } from '@/Size/isSizeable'
+import { RendererControllable } from './RendererControllable'
 
 /**
  * RendererController class.
  */
-export class RendererController {
+export class RendererController implements RendererControllable {
   constructor(protected readonly renderer: Renderable) {}
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
