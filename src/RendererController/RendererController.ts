@@ -1,13 +1,18 @@
+import { Fontable } from '@/Font/Fontable'
 import { fontableToString } from '@/Font/fontableToString'
 import { isFontable } from '@/Font/isFontable'
 import { isPointable } from '@/Pointable/isPointable'
+import { Pointable } from '@/Pointable/Pointable'
 import { isRenderImage } from '@/Renderer/isRenderImage'
 import { Renderable } from '@/Renderer/Renderable'
+import { RenderImage } from '@/Renderer/RenderImage'
 import { RenderLineCap } from '@/Renderer/RenderLineCap'
+import { RenderPolygonPoint } from '@/Renderer/RenderPolygonPoint'
 import { RenderStyle } from '@/Renderer/RenderStyle'
 import { RenderTextAlign } from '@/Renderer/RenderTextAlign'
 import { RenderTextBaseline } from '@/Renderer/RenderTextBaseline'
 import { isSizeable } from '@/Size/isSizeable'
+import { Sizeable } from '@/Size/Sizeable'
 import { RendererControllable } from './RendererControllable'
 
 /**
@@ -16,8 +21,20 @@ import { RendererControllable } from './RendererControllable'
 export class RendererController implements RendererControllable {
   constructor(protected readonly renderer: Renderable) {}
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-  fillRect(...args: any[]) {
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  fillRect(
+    ...args:
+      | [pos: Pointable, size: Sizeable, style: RenderStyle]
+      | [pos: Pointable, width: number, height: number, style: RenderStyle]
+      | [x: number, y: number, size: Sizeable, style: RenderStyle]
+      | [
+          x: number,
+          y: number,
+          width: number,
+          height: number,
+          style: RenderStyle
+        ]
+  ) {
     if (
       isPointable(args[0]) &&
       isSizeable(args[1]) &&
@@ -78,8 +95,33 @@ export class RendererController implements RendererControllable {
     throw new TypeError(this.constructor.name + '.fillRect: invalid arguments.')
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-  strokeRect(...args: any[]) {
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  strokeRect(
+    ...args:
+      | [pos: Pointable, size: Sizeable, lineWidth: number, style: RenderStyle]
+      | [
+          pos: Pointable,
+          width: number,
+          height: number,
+          lineWidth: number,
+          style: RenderStyle
+        ]
+      | [
+          x: number,
+          y: number,
+          size: Sizeable,
+          lineWidth: number,
+          style: RenderStyle
+        ]
+      | [
+          x: number,
+          y: number,
+          width: number,
+          height: number,
+          lineWidth: number,
+          style: RenderStyle
+        ]
+  ) {
     if (
       isPointable(args[0]) &&
       isSizeable(args[1]) &&
@@ -150,8 +192,42 @@ export class RendererController implements RendererControllable {
     )
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-  line(...args: any[]) {
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  line(
+    ...args:
+      | [
+          p1: Pointable,
+          p2: Pointable,
+          lineWidth: number,
+          lineCap: RenderLineCap,
+          style: RenderStyle
+        ]
+      | [
+          p1: Pointable,
+          x2: number,
+          y2: number,
+          lineWidth: number,
+          lineCap: RenderLineCap,
+          style: RenderStyle
+        ]
+      | [
+          x1: number,
+          y1: number,
+          p2: Pointable,
+          lineWidth: number,
+          lineCap: RenderLineCap,
+          style: RenderStyle
+        ]
+      | [
+          x1: number,
+          y1: number,
+          x2: number,
+          y2: number,
+          lineWidth: number,
+          lineCap: RenderLineCap,
+          style: RenderStyle
+        ]
+  ) {
     if (
       isPointable(args[0]) &&
       isPointable(args[1]) &&
@@ -228,8 +304,27 @@ export class RendererController implements RendererControllable {
     throw new TypeError(this.constructor.name + '.line: invalid arguments.')
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-  fillArc(...args: any[]) {
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  fillArc(
+    ...args:
+      | [
+          pos: Pointable,
+          radius: number,
+          startAngle: number,
+          endAngle: number,
+          style: RenderStyle,
+          anticlockwise?: boolean
+        ]
+      | [
+          x: number,
+          y: number,
+          radius: number,
+          startAngle: number,
+          endAngle: number,
+          style: RenderStyle,
+          anticlockwise?: boolean
+        ]
+  ) {
     if (
       isPointable(args[0]) &&
       typeof args[1] === 'number' &&
@@ -271,8 +366,29 @@ export class RendererController implements RendererControllable {
     throw new TypeError(this.constructor.name + '.fillArc: invalid arguments.')
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-  strokeArc(...args: any[]) {
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  strokeArc(
+    ...args:
+      | [
+          pos: Pointable,
+          radius: number,
+          startAngle: number,
+          endAngle: number,
+          lineWidth: number,
+          style: RenderStyle,
+          anticlockwise?: boolean
+        ]
+      | [
+          x: number,
+          y: number,
+          radius: number,
+          startAngle: number,
+          endAngle: number,
+          lineWidth: number,
+          style: RenderStyle,
+          anticlockwise?: boolean
+        ]
+  ) {
     if (
       isPointable(args[0]) &&
       typeof args[1] === 'number' &&
@@ -320,8 +436,31 @@ export class RendererController implements RendererControllable {
     )
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-  fillEllipse(...args: any[]) {
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  fillEllipse(
+    ...args:
+      | [
+          pos: Pointable,
+          radiusX: number,
+          radiusY: number,
+          rotation: number,
+          startAngle: number,
+          endAngle: number,
+          style: RenderStyle,
+          anticlockwise?: boolean
+        ]
+      | [
+          x: number,
+          y: number,
+          radiusX: number,
+          radiusY: number,
+          rotation: number,
+          startAngle: number,
+          endAngle: number,
+          style: RenderStyle,
+          anticlockwise?: boolean
+        ]
+  ) {
     if (
       isPointable(args[0]) &&
       typeof args[1] === 'number' &&
@@ -373,8 +512,33 @@ export class RendererController implements RendererControllable {
     )
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-  strokeEllipse(...args: any[]) {
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  strokeEllipse(
+    ...args:
+      | [
+          pos: Pointable,
+          radiusX: number,
+          radiusY: number,
+          rotation: number,
+          startAngle: number,
+          endAngle: number,
+          lineWidth: number,
+          style: RenderStyle,
+          anticlockwise?: boolean
+        ]
+      | [
+          x: number,
+          y: number,
+          radiusX: number,
+          radiusY: number,
+          rotation: number,
+          startAngle: number,
+          endAngle: number,
+          lineWidth: number,
+          style: RenderStyle,
+          anticlockwise?: boolean
+        ]
+  ) {
     if (
       isPointable(args[0]) &&
       typeof args[1] === 'number' &&
@@ -430,8 +594,10 @@ export class RendererController implements RendererControllable {
     )
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-  fillPolygon(...args: any[]) {
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  fillPolygon(
+    ...args: [points: (RenderPolygonPoint | Pointable)[], style: RenderStyle]
+  ) {
     if (Array.isArray(args[0]) && typeof args[1] === 'string') {
       this.renderer.fillPolygon(
         args[0].map((v) => (isPointable(v) ? [v.x, v.y] : v)),
@@ -444,8 +610,14 @@ export class RendererController implements RendererControllable {
     )
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-  strokePolygon(...args: any[]) {
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  strokePolygon(
+    ...args: [
+      points: (RenderPolygonPoint | Pointable)[],
+      lineWidth: number,
+      style: RenderStyle
+    ]
+  ) {
     if (
       Array.isArray(args[0]) &&
       typeof args[1] === 'number' &&
@@ -463,8 +635,29 @@ export class RendererController implements RendererControllable {
     )
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-  fillText(...args: any[]) {
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  fillText(
+    ...args:
+      | [
+          text: string,
+          pos: Pointable,
+          style: RenderStyle,
+          maxWidth?: number,
+          font?: Fontable,
+          textAlign?: RenderTextAlign,
+          textBaseline?: RenderTextBaseline
+        ]
+      | [
+          text: string,
+          x: number,
+          y: number,
+          style: RenderStyle,
+          maxWidth?: number,
+          font?: Fontable,
+          textAlign?: RenderTextAlign,
+          textBaseline?: RenderTextBaseline
+        ]
+  ) {
     if (
       typeof args[0] === 'string' &&
       isPointable(args[1]) &&
@@ -510,8 +703,31 @@ export class RendererController implements RendererControllable {
     throw new TypeError(this.constructor.name + '.fillText: invalid arguments.')
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-  strokeText(...args: any[]) {
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  strokeText(
+    ...args:
+      | [
+          text: string,
+          pos: Pointable,
+          lineWidth: number,
+          style: RenderStyle,
+          maxWidth?: number,
+          font?: Fontable,
+          textAlign?: RenderTextAlign,
+          textBaseline?: RenderTextBaseline
+        ]
+      | [
+          text: string,
+          x: number,
+          y: number,
+          lineWidth: number,
+          style: RenderStyle,
+          maxWidth?: number,
+          font?: Fontable,
+          textAlign?: RenderTextAlign,
+          textBaseline?: RenderTextBaseline
+        ]
+  ) {
     if (
       typeof args[0] === 'string' &&
       isPointable(args[1]) &&
@@ -563,8 +779,20 @@ export class RendererController implements RendererControllable {
     )
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-  img(...args: any[]) {
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  img(
+    ...args:
+      | [img: RenderImage, pos: Pointable, size?: Sizeable]
+      | [img: RenderImage, pos: Pointable, width?: number, height?: number]
+      | [img: RenderImage, x: number, y: number, size?: Sizeable]
+      | [
+          img: RenderImage,
+          x: number,
+          y: number,
+          width?: number,
+          height?: number
+        ]
+  ) {
     if (isRenderImage(args[0]) && isPointable(args[1]) && isSizeable(args[2])) {
       this.renderer.img(
         args[0],
