@@ -14,10 +14,14 @@ export const isFontable = (value: any): value is Fontable => {
     return false
   }
 
-  const isFont = typeof value['font'] === 'string'
-  const isSize = isFontSize(value['size'])
-  const isStyle = typeof value === 'undefined' || isFontStyle(value['style'])
-  const isWeight = typeof value === 'undefined' || isFontWeight(value['weight'])
+  const isFont =
+    typeof value['font'] === 'undefined' || typeof value['font'] === 'string'
+  const isSize =
+    typeof value['size'] === 'undefined' || isFontSize(value['size'])
+  const isStyle =
+    typeof value['style'] === 'undefined' || isFontStyle(value['style'])
+  const isWeight =
+    typeof value['weight'] === 'undefined' || isFontWeight(value['weight'])
 
   return isFont && isSize && isStyle && isWeight
 }
