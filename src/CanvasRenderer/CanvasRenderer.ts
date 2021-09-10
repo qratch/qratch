@@ -1,7 +1,9 @@
 import { Renderable } from '@/Renderer/Renderable'
 import { RenderLineCap } from '@/Renderer/RenderLineCap'
 import { RenderPolygonPoint } from '@/Renderer/RenderPolygonPoint'
+import { RenderStyle } from '@/Renderer/RenderStyle'
 import { RenderTextAlign } from '@/Renderer/RenderTextAlign'
+import { RenderTextBaseline } from '@/Renderer/RenderTextBaseline'
 
 /**
  * CanvasRenderer class.
@@ -98,8 +100,9 @@ export class CanvasRenderer implements Renderable {
   ): void {
     this.context.fillStyle = style
 
+    this.context.beginPath()
     this.context.arc(x, y, radius, startAngle, endAngle, anticlockwise)
-    this.context.fill
+    this.context.fill()
   }
 
   strokeArc(
@@ -115,7 +118,65 @@ export class CanvasRenderer implements Renderable {
     this.context.strokeStyle = style
     this.context.lineWidth = lineWidth
 
+    this.context.beginPath()
     this.context.arc(x, y, radius, startAngle, endAngle, anticlockwise)
+    this.context.stroke()
+  }
+
+  fillEllipse(
+    x: number,
+    y: number,
+    radiusX: number,
+    radiusY: number,
+    rotation: number,
+    startAngle: number,
+    endAngle: number,
+    style: string,
+    anticlockwise?: boolean
+  ): void {
+    this.context.fillStyle = style
+
+    this.context.beginPath()
+    this.context.ellipse(
+      x,
+      y,
+      radiusX,
+      radiusY,
+      rotation,
+      startAngle,
+      endAngle,
+      anticlockwise
+    )
+    this.context.fill()
+  }
+
+  strokeEllipse(
+    x: number,
+    y: number,
+    radiusX: number,
+    radiusY: number,
+    rotation: number,
+    startAngle: number,
+    endAngle: number,
+    lineWidth: number,
+    style: string,
+    anticlockwise?: boolean
+  ): void {
+    this.context.lineWidth = lineWidth
+    this.context.strokeStyle = style
+
+    this.context.beginPath()
+    this.context.ellipse(
+      x,
+      y,
+      radiusX,
+      radiusY,
+      rotation,
+      startAngle,
+      endAngle,
+      anticlockwise
+    )
+    this.context.stroke()
   }
 
   fillPolygon(points: RenderPolygonPoint[], style: string): void {
@@ -152,27 +213,38 @@ export class CanvasRenderer implements Renderable {
     text: string,
     x: number,
     y: number,
-    font: string,
-    size: number,
-    textAlign: RenderTextAlign,
-    style: string
+    style: RenderStyle,
+    maxWidth?: number,
+    font?: string,
+    textAlign?: RenderTextAlign,
+    textBaseline?: RenderTextBaseline
   ): void {
     this.context.fillStyle = style
-    this.context.textAlign = textAlign
-    this.context.font = `${font} ${size}px`
+    this.context.textAlign = textAlign ?? this.context.textAlign
+    this.context.textBaseline = textBaseline ?? this.context.textBaseline
+    this.context.font = font ?? this.context.font
+
+    this.context.fillText(text, x, y, maxWidth)
   }
 
   strokeText(
     text: string,
     x: number,
     y: number,
-    font: string,
-    size: number,
-    textAlign: RenderTextAlign,
     lineWidth: number,
-    style: string
+    style: RenderStyle,
+    maxWidth?: number,
+    font?: string,
+    textAlign?: RenderTextAlign,
+    textBaseline?: RenderTextBaseline
   ): void {
+    this.context.lineWidth = lineWidth
     this.context.strokeStyle = style
+    this.context.textAlign = textAlign ?? this.context.textAlign
+    this.context.textBaseline = textBaseline ?? this.context.textBaseline
+    this.context.font = font ?? this.context.font
+
+    this.context.strokeText(text, x, y, maxWidth)
   }
 
   img(
@@ -182,6 +254,12 @@ export class CanvasRenderer implements Renderable {
     width?: number,
     height?: number
   ): void {
-    throw new Error('Method not implemented.')
+    if (typeof width === 'undefined' && typeof height === 'undefined') {
+      this.context.drawImage(image, x, y)
+
+      return
+    }
+
+    this.context.drawImage(image, x, y)
   }
 }
