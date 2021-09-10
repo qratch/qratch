@@ -254,8 +254,8 @@ export class CanvasRenderer implements Renderable {
     width?: number,
     height?: number
   ): void {
-    if (typeof width === 'undefined' && typeof height === 'undefined') {
-      this.context.drawImage(image, x, y)
+    if (typeof width === 'number' && typeof height === 'number') {
+      this.context.drawImage(image, x, y, width, height)
 
       return
     }
