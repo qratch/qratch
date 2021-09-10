@@ -6,7 +6,8 @@
 
 import { RenderImage } from './RenderImage'
 
-declare const OffscreenCanvas: undefined
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare const OffscreenCanvas: any
 
 // eslint-disable-next-line
 export const isRenderImage = (value: any): value is RenderImage => {
