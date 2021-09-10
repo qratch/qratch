@@ -5,6 +5,7 @@ import { RenderLineCap } from '@/Renderer/RenderLineCap'
 import { RenderPolygonPoint } from '@/Renderer/RenderPolygonPoint'
 import { RenderStyle } from '@/Renderer/RenderStyle'
 import { RenderTextAlign } from '@/Renderer/RenderTextAlign'
+import { RenderTextBaseline } from '@/Renderer/RenderTextBaseline'
 import { Sizeable } from '@/Size/Sizeable'
 
 /**
@@ -419,35 +420,20 @@ export interface RendererControllable {
    *
    * @param text text.
    * @param pos pos.
+   * @param style style.
+   * @param maxWidth maxWidth.
    * @param font font.
    * @param textAlign textAlign.
-   * @param style style.
+   * @param textBaseline textBaseline.
    */
   fillText(
     text: string,
     pos: Pointable,
-    font: Fontable,
-    textAlign: RenderTextAlign,
-    style: RenderStyle
-  ): void
-
-  /**
-   * draw filled text.
-   *
-   * @param text text.
-   * @param pos pos.
-   * @param font font.
-   * @param size size.
-   * @param textAlign textAlign.
-   * @param style style.
-   */
-  fillText(
-    text: string,
-    pos: Pointable,
-    font: string,
-    size: number,
-    textAlign: RenderTextAlign,
-    style: RenderStyle
+    style: RenderStyle,
+    maxWidth?: number,
+    font?: Fontable,
+    textAlign?: RenderTextAlign,
+    textBaseline?: RenderTextBaseline
   ): void
 
   /**
@@ -456,38 +442,21 @@ export interface RendererControllable {
    * @param text text.
    * @param x x.
    * @param y y.
+   * @param style style.
+   * @param maxWidth maxWidth.
    * @param font font.
    * @param textAlign textAlign.
-   * @param style style.
+   * @param textBaseline textBaseline.
    */
   fillText(
     text: string,
     x: number,
     y: number,
-    font: Fontable,
-    textAlign: RenderTextAlign,
-    style: RenderStyle
-  ): void
-
-  /**
-   * draw filled text.
-   *
-   * @param text text.
-   * @param x x.
-   * @param y y.
-   * @param font font.
-   * @param size size.
-   * @param textAlign textAlign.
-   * @param style style.
-   */
-  fillText(
-    text: string,
-    x: number,
-    y: number,
-    font: string,
-    size: number,
-    textAlign: RenderTextAlign,
-    style: RenderStyle
+    style: RenderStyle,
+    maxWidth?: number,
+    font?: Fontable,
+    textAlign?: RenderTextAlign,
+    textBaseline?: RenderTextBaseline
   ): void
 
   /**
@@ -495,39 +464,22 @@ export interface RendererControllable {
    *
    * @param text text.
    * @param pos pos.
-   * @param font font.
-   * @param textAlign textAlign.
    * @param lineWidth lineWidth.
    * @param style style.
+   * @param maxWidth maxWidth.
+   * @param font font.
+   * @param textAlign textAlign.
+   * @param textBaseline textBaseline.
    */
   strokeText(
     text: string,
     pos: Pointable,
-    font: Fontable,
-    textAlign: RenderTextAlign,
     lineWidth: number,
-    style: RenderStyle
-  ): void
-
-  /**
-   * draw stroked text.
-   *
-   * @param text text.
-   * @param pos pos.
-   * @param font font.
-   * @param size size.
-   * @param textAlign textAlign.
-   * @param lineWidth lineWidth.
-   * @param style style.
-   */
-  strokeText(
-    text: string,
-    pos: Pointable,
-    font: string,
-    size: number,
-    textAlign: RenderTextAlign,
-    lineWidth: number,
-    style: RenderStyle
+    style: RenderStyle,
+    maxWidth?: number,
+    font?: Fontable,
+    textAlign?: RenderTextAlign,
+    textBaseline?: RenderTextBaseline
   ): void
 
   /**
@@ -536,42 +488,23 @@ export interface RendererControllable {
    * @param text text.
    * @param x x.
    * @param y y.
-   * @param font font.
-   * @param textAlign textAlign.
    * @param lineWidth lineWidth.
    * @param style style.
+   * @param maxWidth maxWidth.
+   * @param font font.
+   * @param textAlign textAlign.
+   * @param textBaseline textBaseline.
    */
   strokeText(
     text: string,
     x: number,
     y: number,
-    font: Fontable,
-    textAlign: RenderTextAlign,
     lineWidth: number,
-    style: RenderStyle
-  ): void
-
-  /**
-   * draw stroked text.
-   *
-   * @param text text.
-   * @param x x.
-   * @param y y.
-   * @param font font.
-   * @param size size.
-   * @param textAlign textAlign.
-   * @param lineWidth lineWidth.
-   * @param style style.
-   */
-  strokeText(
-    text: string,
-    x: number,
-    y: number,
-    font: string,
-    size: number,
-    textAlign: RenderTextAlign,
-    lineWidth: number,
-    style: RenderStyle
+    style: RenderStyle,
+    maxWidth?: number,
+    font?: Fontable,
+    textAlign?: RenderTextAlign,
+    textBaseline?: RenderTextBaseline
   ): void
 
   /**

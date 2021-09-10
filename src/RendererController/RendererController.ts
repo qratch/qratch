@@ -1,3 +1,4 @@
+import { fontableToString } from '@/Font/fontableToString'
 import { isFontable } from '@/Font/isFontable'
 import { isPointable } from '@/Pointable/isPointable'
 import { isRenderImage } from '@/Renderer/isRenderImage'
@@ -5,6 +6,7 @@ import { Renderable } from '@/Renderer/Renderable'
 import { RenderLineCap } from '@/Renderer/RenderLineCap'
 import { RenderStyle } from '@/Renderer/RenderStyle'
 import { RenderTextAlign } from '@/Renderer/RenderTextAlign'
+import { RenderTextBaseline } from '@/Renderer/RenderTextBaseline'
 import { isSizeable } from '@/Size/isSizeable'
 
 /**
@@ -465,54 +467,21 @@ export class RendererController {
     if (
       typeof args[0] === 'string' &&
       isPointable(args[1]) &&
-      isFontable(args[2]) &&
-      typeof args[3] === 'string' &&
-      typeof args[4] === 'string'
-    ) {
-      this.renderer.fillText(
-        args[0],
-        args[1].x,
-        args[1].y,
-        args[2].font,
-        args[2].size,
-        args[3] as RenderTextAlign,
-        args[4] as RenderStyle
-      )
-    }
-    if (
-      typeof args[0] === 'string' &&
-      isPointable(args[1]) &&
       typeof args[2] === 'string' &&
       typeof args[3] === 'number' &&
-      typeof args[4] === 'string' &&
-      typeof args[5] === 'string'
+      isFontable(args[4]) &&
+      typeof args[5] === 'string' &&
+      typeof args[6] === 'string'
     ) {
       this.renderer.fillText(
         args[0],
         args[1].x,
         args[1].y,
-        args[2],
+        args[2] as RenderStyle,
         args[3],
-        args[4] as RenderTextAlign,
-        args[5] as RenderStyle
-      )
-    }
-    if (
-      typeof args[0] === 'string' &&
-      typeof args[1] === 'number' &&
-      typeof args[2] === 'number' &&
-      isFontable(args[3]) &&
-      typeof args[4] === 'string' &&
-      typeof args[5] === 'string'
-    ) {
-      this.renderer.fillText(
-        args[0],
-        args[1],
-        args[2],
-        args[3].font,
-        args[3].size,
-        args[4] as RenderTextAlign,
-        args[5] as RenderStyle
+        fontableToString(args[4]),
+        args[5] as RenderTextAlign,
+        args[6] as RenderTextBaseline
       )
     }
     if (
@@ -521,17 +490,19 @@ export class RendererController {
       typeof args[2] === 'number' &&
       typeof args[3] === 'string' &&
       typeof args[4] === 'number' &&
-      typeof args[5] === 'string' &&
-      typeof args[6] === 'string'
+      isFontable(args[5]) &&
+      typeof args[6] === 'string' &&
+      typeof args[7] === 'string'
     ) {
       this.renderer.fillText(
         args[0],
         args[1],
         args[2],
-        args[3],
+        args[3] as RenderStyle,
         args[4],
-        args[5] as RenderTextAlign,
-        args[6] as RenderStyle
+        fontableToString(args[5]),
+        args[6] as RenderTextAlign,
+        args[7] as RenderTextBaseline
       )
     }
 
@@ -543,81 +514,46 @@ export class RendererController {
     if (
       typeof args[0] === 'string' &&
       isPointable(args[1]) &&
-      isFontable(args[2]) &&
-      typeof args[3] === 'string' &&
-      typeof args[4] === 'number' &&
-      typeof args[5] === 'string'
-    ) {
-      this.renderer.strokeText(
-        args[0],
-        args[1].x,
-        args[1].y,
-        args[2].font,
-        args[2].size,
-        args[3] as RenderTextAlign,
-        args[4],
-        args[5] as RenderStyle
-      )
-    }
-    if (
-      typeof args[0] === 'string' &&
-      isPointable(args[1]) &&
-      typeof args[2] === 'string' &&
-      typeof args[3] === 'number' &&
-      typeof args[4] === 'string' &&
-      typeof args[5] === 'number' &&
-      typeof args[6] === 'string'
-    ) {
-      this.renderer.strokeText(
-        args[0],
-        args[1].x,
-        args[1].y,
-        args[2],
-        args[3],
-        args[4] as RenderTextAlign,
-        args[5],
-        args[6] as RenderStyle
-      )
-    }
-    if (
-      typeof args[0] === 'string' &&
-      typeof args[1] === 'number' &&
-      typeof args[2] === 'number' &&
-      isFontable(args[3]) &&
-      typeof args[4] === 'string' &&
-      typeof args[5] === 'number' &&
-      typeof args[6] === 'string'
-    ) {
-      this.renderer.strokeText(
-        args[0],
-        args[1],
-        args[2],
-        args[3].font,
-        args[3].size,
-        args[4] as RenderTextAlign,
-        args[5],
-        args[6] as RenderStyle
-      )
-    }
-    if (
-      typeof args[0] === 'string' &&
-      typeof args[1] === 'number' &&
       typeof args[2] === 'number' &&
       typeof args[3] === 'string' &&
       typeof args[4] === 'number' &&
-      typeof args[5] === 'string' &&
-      typeof args[6] === 'number' &&
+      isFontable(args[5]) &&
+      typeof args[6] === 'string' &&
       typeof args[7] === 'string'
     ) {
       this.renderer.strokeText(
         args[0],
+        args[1].x,
+        args[1].y,
+        args[2],
+        args[3] as RenderStyle,
+        args[4],
+        fontableToString(args[5]),
+        args[6] as RenderTextAlign,
+        args[7] as RenderTextBaseline
+      )
+    }
+    if (
+      typeof args[0] === 'string' &&
+      typeof args[1] === 'number' &&
+      typeof args[2] === 'number' &&
+      typeof args[3] === 'number' &&
+      typeof args[4] === 'string' &&
+      typeof args[5] === 'number' &&
+      isFontable(args[6]) &&
+      typeof args[7] === 'string' &&
+      typeof args[8] === 'string'
+    ) {
+      this.renderer.strokeText(
+        args[0],
         args[1],
         args[2],
         args[3],
-        args[4],
-        args[5] as RenderTextAlign,
-        args[6],
-        args[7] as RenderStyle
+        args[4] as RenderStyle,
+        args[5],
+        fontableToString(args[6]),
+        args[7] as RenderTextAlign,
+        args[8] as RenderTextBaseline
       )
     }
 
