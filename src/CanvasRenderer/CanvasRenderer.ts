@@ -203,7 +203,7 @@ export class CanvasRenderer implements Renderable {
     this.context.moveTo(first[0], first[1])
 
     for (const point of points) {
-      this.context.moveTo(point[0], point[1])
+      this.context.lineTo(point[0], point[1])
     }
 
     this.context.closePath()
