@@ -695,7 +695,7 @@ export class RendererController implements RendererControllable {
         args[1].y,
         args[2] as RenderStyle,
         args[3],
-        fontableToString(args[4]),
+        args[4] ? fontableToString(args[4]) : undefined,
         args[5] as RenderTextAlign,
         args[6] as RenderTextBaseline
       )
@@ -717,7 +717,7 @@ export class RendererController implements RendererControllable {
         args[2],
         args[3] as RenderStyle,
         args[4],
-        fontableToString(args[5]),
+        args[5] ? fontableToString(args[5]) : undefined,
         args[6] as RenderTextAlign,
         args[7] as RenderTextBaseline
       )
@@ -769,7 +769,7 @@ export class RendererController implements RendererControllable {
         args[2],
         args[3] as RenderStyle,
         args[4],
-        fontableToString(args[5]),
+        args[5] ? fontableToString(args[5]) : undefined,
         args[6] as RenderTextAlign,
         args[7] as RenderTextBaseline
       )
@@ -793,7 +793,7 @@ export class RendererController implements RendererControllable {
         args[3],
         args[4] as RenderStyle,
         args[5],
-        fontableToString(args[6]),
+        args[6] ? fontableToString(args[6]) : undefined,
         args[7] as RenderTextAlign,
         args[8] as RenderTextBaseline
       )
@@ -828,8 +828,8 @@ export class RendererController implements RendererControllable {
         args[0],
         args[1].x,
         args[1].y,
-        args[2].width,
-        args[2].height
+        args[2]?.width,
+        args[2]?.height
       )
       return
     }
@@ -852,8 +852,8 @@ export class RendererController implements RendererControllable {
         args[0],
         args[1],
         args[2],
-        args[3].width,
-        args[3].height
+        args[3]?.width,
+        args[3]?.height
       )
       return
     }
