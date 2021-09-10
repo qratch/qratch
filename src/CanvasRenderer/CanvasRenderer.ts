@@ -86,6 +86,7 @@ export class CanvasRenderer implements Renderable {
     this.context.strokeStyle = style
     this.context.lineCap = lineCap
 
+    this.context.beginPath()
     this.context.moveTo(x1, y1)
     this.context.lineTo(x2, y2)
     this.context.stroke()
