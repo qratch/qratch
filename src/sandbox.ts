@@ -10,4 +10,4 @@ if (!canvas) {
 const r = new CanvasRenderer(canvas as HTMLCanvasElement)
 const c = new RendererController(r)
 
-c.fillRect(0, 0, 32, 32)
+c.fillArc(16, 16, 16, 0, Math.PI * 2, 'red')
