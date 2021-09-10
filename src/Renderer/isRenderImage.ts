@@ -6,6 +6,8 @@
 
 import { RenderImage } from './RenderImage'
 
+declare const OffscreenCanvas: undefined
+
 // eslint-disable-next-line
 export const isRenderImage = (value: any): value is RenderImage => {
   if (
