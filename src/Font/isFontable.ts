@@ -10,6 +10,10 @@ import { isFontWeight } from './isFontWeight'
  */
 // eslint-disable-next-line
 export const isFontable = (value: any): value is Fontable => {
+  if (typeof value === 'undefined') {
+    return false
+  }
+
   const isFont = typeof value['font'] === 'string'
   const isSize = isFontSize(value['size'])
   const isStyle = typeof value === 'undefined' || isFontStyle(value['style'])
