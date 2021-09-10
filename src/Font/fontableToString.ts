@@ -15,7 +15,7 @@ export const fontableToString = (fontable: Fontable): string => {
 
   // font-style, font-variant and font-weight must precede font-size.
   // https://developer.mozilla.org/en-US/docs/Web/CSS/font
-  const string = [style, weight, size, font].join('')
+  const string = [style, weight, size, font].join(' ')
 
   return string
 }

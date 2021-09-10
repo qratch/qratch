@@ -21,6 +21,25 @@ import { RendererControllable } from './RendererControllable'
 export class RendererController implements RendererControllable {
   constructor(protected readonly renderer: Renderable) {}
 
+  fillRect(pos: Pointable, size: Sizeable, style: RenderStyle): void
+
+  fillRect(
+    pos: Pointable,
+    width: number,
+    height: number,
+    style: RenderStyle
+  ): void
+
+  fillRect(x: number, y: number, size: Sizeable, style: RenderStyle): void
+
+  fillRect(
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+    style: RenderStyle
+  ): void
+
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   fillRect(
     ...args:
@@ -98,6 +117,38 @@ export class RendererController implements RendererControllable {
 
     throw new TypeError(this.constructor.name + '.fillRect: invalid arguments.')
   }
+
+  strokeRect(
+    pos: Pointable,
+    size: Sizeable,
+    lineWidth: number,
+    style: RenderStyle
+  ): void
+
+  strokeRect(
+    pos: Pointable,
+    width: number,
+    height: number,
+    lineWidth: number,
+    style: RenderStyle
+  ): void
+
+  strokeRect(
+    x: number,
+    y: number,
+    size: Sizeable,
+    lineWidth: number,
+    style: RenderStyle
+  ): void
+
+  strokeRect(
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+    lineWidth: number,
+    style: RenderStyle
+  ): void
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   strokeRect(
@@ -199,6 +250,42 @@ export class RendererController implements RendererControllable {
       this.constructor.name + '.strokeRect: invalid arguments.'
     )
   }
+
+  line(
+    p1: Pointable,
+    p2: Pointable,
+    lineWidth: number,
+    lineCap: RenderLineCap,
+    style: RenderStyle
+  ): void
+
+  line(
+    p1: Pointable,
+    x2: number,
+    y2: number,
+    lineWidth: number,
+    lineCap: RenderLineCap,
+    style: RenderStyle
+  ): void
+
+  line(
+    x1: number,
+    y1: number,
+    p2: Pointable,
+    lineWidth: number,
+    lineCap: RenderLineCap,
+    style: RenderStyle
+  ): void
+
+  line(
+    x1: number,
+    y1: number,
+    x2: number,
+    y2: number,
+    lineWidth: number,
+    lineCap: RenderLineCap,
+    style: RenderStyle
+  ): void
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   line(
@@ -316,6 +403,25 @@ export class RendererController implements RendererControllable {
     throw new TypeError(this.constructor.name + '.line: invalid arguments.')
   }
 
+  fillArc(
+    pos: Pointable,
+    radius: number,
+    startAngle: number,
+    endAngle: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
+  ): void
+
+  fillArc(
+    x: number,
+    y: number,
+    radius: number,
+    startAngle: number,
+    endAngle: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
+  ): void
+
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   fillArc(
     ...args:
@@ -379,6 +485,27 @@ export class RendererController implements RendererControllable {
 
     throw new TypeError(this.constructor.name + '.fillArc: invalid arguments.')
   }
+
+  strokeArc(
+    pos: Pointable,
+    radius: number,
+    startAngle: number,
+    endAngle: number,
+    lineWidth: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
+  ): void
+
+  strokeArc(
+    x: number,
+    y: number,
+    radius: number,
+    startAngle: number,
+    endAngle: number,
+    lineWidth: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
+  ): void
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   strokeArc(
@@ -451,6 +578,29 @@ export class RendererController implements RendererControllable {
       this.constructor.name + '.strokeArc: invalid arguments.'
     )
   }
+
+  fillEllipse(
+    pos: Pointable,
+    radiusX: number,
+    radiusY: number,
+    rotation: number,
+    startAngle: number,
+    endAngle: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
+  ): void
+
+  fillEllipse(
+    x: number,
+    y: number,
+    radiusX: number,
+    radiusY: number,
+    rotation: number,
+    startAngle: number,
+    endAngle: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
+  ): void
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   fillEllipse(
@@ -529,6 +679,31 @@ export class RendererController implements RendererControllable {
       this.constructor.name + '.fillEllipse: invalid arguments.'
     )
   }
+
+  strokeEllipse(
+    pos: Pointable,
+    radiusX: number,
+    radiusY: number,
+    rotation: number,
+    startAngle: number,
+    endAngle: number,
+    lineWidth: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
+  ): void
+
+  strokeEllipse(
+    x: number,
+    y: number,
+    radiusX: number,
+    radiusY: number,
+    rotation: number,
+    startAngle: number,
+    endAngle: number,
+    lineWidth: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
+  ): void
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   strokeEllipse(
@@ -614,6 +789,11 @@ export class RendererController implements RendererControllable {
     )
   }
 
+  fillPolygon(
+    points: (RenderPolygonPoint | Pointable)[],
+    style: RenderStyle
+  ): void
+
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   fillPolygon(
     ...args: [points: (RenderPolygonPoint | Pointable)[], style: RenderStyle]
@@ -630,6 +810,12 @@ export class RendererController implements RendererControllable {
       this.constructor.name + '.fillPolygon: invalid arguments.'
     )
   }
+
+  strokePolygon(
+    points: (RenderPolygonPoint | Pointable)[],
+    lineWidth: number,
+    style: RenderStyle
+  ): void
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   strokePolygon(
@@ -656,6 +842,27 @@ export class RendererController implements RendererControllable {
       this.constructor.name + '.strokePolygon: invalid arguments.'
     )
   }
+
+  fillText(
+    text: string,
+    pos: Pointable,
+    style: RenderStyle,
+    maxWidth?: number,
+    font?: Fontable,
+    textAlign?: RenderTextAlign,
+    textBaseline?: RenderTextBaseline
+  ): void
+
+  fillText(
+    text: string,
+    x: number,
+    y: number,
+    style: RenderStyle,
+    maxWidth?: number,
+    font?: Fontable,
+    textAlign?: RenderTextAlign,
+    textBaseline?: RenderTextBaseline
+  ): void
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   fillText(
@@ -726,6 +933,29 @@ export class RendererController implements RendererControllable {
 
     throw new TypeError(this.constructor.name + '.fillText: invalid arguments.')
   }
+
+  strokeText(
+    text: string,
+    pos: Pointable,
+    lineWidth: number,
+    style: RenderStyle,
+    maxWidth?: number,
+    font?: Fontable,
+    textAlign?: RenderTextAlign,
+    textBaseline?: RenderTextBaseline
+  ): void
+
+  strokeText(
+    text: string,
+    x: number,
+    y: number,
+    lineWidth: number,
+    style: RenderStyle,
+    maxWidth?: number,
+    font?: Fontable,
+    textAlign?: RenderTextAlign,
+    textBaseline?: RenderTextBaseline
+  ): void
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   strokeText(
@@ -804,6 +1034,20 @@ export class RendererController implements RendererControllable {
       this.constructor.name + '.strokeText: invalid arguments.'
     )
   }
+
+  img(img: RenderImage, pos: Pointable, size?: Sizeable): void
+
+  img(img: RenderImage, pos: Pointable, width?: number, height?: number): void
+
+  img(img: RenderImage, x: number, y: number, size?: Sizeable): void
+
+  img(
+    img: RenderImage,
+    x: number,
+    y: number,
+    width?: number,
+    height?: number
+  ): void
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   img(
