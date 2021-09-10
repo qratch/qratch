@@ -47,6 +47,7 @@ export class RendererController implements RendererControllable {
         args[1].height,
         args[2] as RenderStyle
       )
+      return
     }
     if (
       isPointable(args[0]) &&
@@ -61,6 +62,7 @@ export class RendererController implements RendererControllable {
         args[2],
         args[3] as RenderStyle
       )
+      return
     }
     if (
       typeof args[0] === 'number' &&
@@ -75,6 +77,7 @@ export class RendererController implements RendererControllable {
         args[2].height,
         args[3] as RenderStyle
       )
+      return
     }
     if (
       typeof args[0] === 'number' &&
@@ -90,6 +93,7 @@ export class RendererController implements RendererControllable {
         args[3],
         args[4] as RenderStyle
       )
+      return
     }
 
     throw new TypeError(this.constructor.name + '.fillRect: invalid arguments.')
@@ -136,6 +140,7 @@ export class RendererController implements RendererControllable {
         args[2],
         args[3] as RenderStyle
       )
+      return
     }
     if (
       isPointable(args[0]) &&
@@ -152,6 +157,7 @@ export class RendererController implements RendererControllable {
         args[3],
         args[4] as RenderStyle
       )
+      return
     }
     if (
       typeof args[0] === 'number' &&
@@ -168,6 +174,7 @@ export class RendererController implements RendererControllable {
         args[3],
         args[4] as RenderStyle
       )
+      return
     }
     if (
       typeof args[0] === 'number' &&
@@ -185,6 +192,7 @@ export class RendererController implements RendererControllable {
         args[4],
         args[5] as RenderStyle
       )
+      return
     }
 
     throw new TypeError(
@@ -244,6 +252,7 @@ export class RendererController implements RendererControllable {
         args[3] as RenderLineCap,
         args[4] as RenderStyle
       )
+      return
     }
     if (
       isPointable(args[0]) &&
@@ -262,6 +271,7 @@ export class RendererController implements RendererControllable {
         args[4] as RenderLineCap,
         args[5] as RenderStyle
       )
+      return
     }
     if (
       typeof args[0] === 'number' &&
@@ -280,6 +290,7 @@ export class RendererController implements RendererControllable {
         args[4] as RenderLineCap,
         args[5] as RenderStyle
       )
+      return
     }
     if (
       typeof args[0] === 'number' &&
@@ -299,6 +310,7 @@ export class RendererController implements RendererControllable {
         args[5] as RenderLineCap,
         args[6] as RenderStyle
       )
+      return
     }
 
     throw new TypeError(this.constructor.name + '.line: invalid arguments.')
@@ -342,6 +354,7 @@ export class RendererController implements RendererControllable {
         args[4] as RenderStyle,
         args[5]
       )
+      return
     }
     if (
       typeof args[0] === 'number' &&
@@ -361,6 +374,7 @@ export class RendererController implements RendererControllable {
         args[5] as RenderStyle,
         args[6]
       )
+      return
     }
 
     throw new TypeError(this.constructor.name + '.fillArc: invalid arguments.')
@@ -408,6 +422,7 @@ export class RendererController implements RendererControllable {
         args[5] as RenderStyle,
         args[6]
       )
+      return
     }
     if (
       typeof args[0] === 'number' &&
@@ -429,6 +444,7 @@ export class RendererController implements RendererControllable {
         args[6] as RenderStyle,
         args[7]
       )
+      return
     }
 
     throw new TypeError(
@@ -482,6 +498,7 @@ export class RendererController implements RendererControllable {
         args[6] as RenderStyle,
         args[7]
       )
+      return
     }
     if (
       typeof args[0] === 'number' &&
@@ -505,6 +522,7 @@ export class RendererController implements RendererControllable {
         args[7] as RenderStyle,
         args[8]
       )
+      return
     }
 
     throw new TypeError(
@@ -562,6 +580,7 @@ export class RendererController implements RendererControllable {
         args[7] as RenderStyle,
         args[8]
       )
+      return
     }
     if (
       typeof args[0] === 'number' &&
@@ -587,6 +606,7 @@ export class RendererController implements RendererControllable {
         args[8] as RenderStyle,
         args[9]
       )
+      return
     }
 
     throw new TypeError(
@@ -603,6 +623,7 @@ export class RendererController implements RendererControllable {
         args[0].map((v) => (isPointable(v) ? [v.x, v.y] : v)),
         args[1] as RenderStyle
       )
+      return
     }
 
     throw new TypeError(
@@ -628,6 +649,7 @@ export class RendererController implements RendererControllable {
         args[1],
         args[2] as RenderStyle
       )
+      return
     }
 
     throw new TypeError(
@@ -677,6 +699,7 @@ export class RendererController implements RendererControllable {
         args[5] as RenderTextAlign,
         args[6] as RenderTextBaseline
       )
+      return
     }
     if (
       typeof args[0] === 'string' &&
@@ -698,6 +721,7 @@ export class RendererController implements RendererControllable {
         args[6] as RenderTextAlign,
         args[7] as RenderTextBaseline
       )
+      return
     }
 
     throw new TypeError(this.constructor.name + '.fillText: invalid arguments.')
@@ -749,6 +773,7 @@ export class RendererController implements RendererControllable {
         args[6] as RenderTextAlign,
         args[7] as RenderTextBaseline
       )
+      return
     }
     if (
       typeof args[0] === 'string' &&
@@ -772,6 +797,7 @@ export class RendererController implements RendererControllable {
         args[7] as RenderTextAlign,
         args[8] as RenderTextBaseline
       )
+      return
     }
 
     throw new TypeError(
@@ -801,6 +827,7 @@ export class RendererController implements RendererControllable {
         args[2].width,
         args[2].height
       )
+      return
     }
     if (
       isRenderImage(args[0]) &&
@@ -809,6 +836,7 @@ export class RendererController implements RendererControllable {
       typeof args[3] === 'number'
     ) {
       this.renderer.img(args[0], args[1].x, args[1].y, args[2], args[3])
+      return
     }
     if (
       isRenderImage(args[0]) &&
@@ -823,6 +851,7 @@ export class RendererController implements RendererControllable {
         args[3].width,
         args[3].height
       )
+      return
     }
     if (
       isRenderImage(args[0]) &&
@@ -832,6 +861,7 @@ export class RendererController implements RendererControllable {
       typeof args[4] === 'number'
     ) {
       this.renderer.img(args[0], args[1], args[2], args[3], args[4])
+      return
     }
 
     throw new TypeError(this.constructor.name + '.img: invalid arguments.')
