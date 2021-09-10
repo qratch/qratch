@@ -5,36 +5,24 @@ import { FontWeight } from './FontWeight'
 /**
  * Fontable interface.
  */
-export type Fontable =
-  | {
-      /**
-       * font name.
-       */
-      font: string
+export type Fontable = {
+  /**
+   * font name.
+   */
+  font?: string
 
-      /**
-       * font size.
-       */
-      size: FontSize
+  /**
+   * font size.
+   */
+  size?: FontSize
 
-      /**
-       * font style.
-       */
-      style?: FontStyle
+  /**
+   * font style.
+   */
+  style?: FontStyle
 
-      /**
-       * font weight.
-       */
-      weight?: FontWeight
-    }
-  | {
-      /**
-       * font style.
-       */
-      style?: FontStyle
-
-      /**
-       * font weight.
-       */
-      weight?: FontWeight
-    }
+  /**
+   * font weight.
+   */
+  weight?: FontWeight
+}
