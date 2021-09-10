@@ -84,9 +84,11 @@ export class CanvasRenderer implements Renderable {
   ): void {
     this.context.lineWidth = lineWidth
     this.context.strokeStyle = style
+    this.context.lineCap = lineCap
 
     this.context.moveTo(x1, y1)
     this.context.lineTo(x2, y2)
+    this.context.stroke()
   }
 
   fillArc(
