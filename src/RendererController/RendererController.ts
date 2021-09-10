@@ -343,7 +343,7 @@ export class RendererController implements RendererControllable {
       typeof args[2] === 'number' &&
       typeof args[3] === 'number' &&
       typeof args[4] === 'string' &&
-      typeof args[5] === 'boolean'
+      (typeof args[5] === 'boolean' || typeof args[5] === 'undefined')
     ) {
       this.renderer.fillArc(
         args[0].x,
@@ -363,7 +363,7 @@ export class RendererController implements RendererControllable {
       typeof args[3] === 'number' &&
       typeof args[4] === 'number' &&
       typeof args[5] === 'string' &&
-      typeof args[6] === 'boolean'
+      (typeof args[6] === 'boolean' || typeof args[6] === 'undefined')
     ) {
       this.renderer.fillArc(
         args[0],
@@ -410,7 +410,7 @@ export class RendererController implements RendererControllable {
       typeof args[3] === 'number' &&
       typeof args[4] === 'number' &&
       typeof args[5] === 'string' &&
-      typeof args[6] === 'boolean'
+      (typeof args[6] === 'boolean' || typeof args[6] === 'undefined')
     ) {
       this.renderer.strokeArc(
         args[0].x,
@@ -432,7 +432,7 @@ export class RendererController implements RendererControllable {
       typeof args[4] === 'number' &&
       typeof args[5] === 'number' &&
       typeof args[6] === 'string' &&
-      typeof args[7] === 'boolean'
+      (typeof args[7] === 'boolean' || typeof args[7] === 'undefined')
     ) {
       this.renderer.strokeArc(
         args[0],
@@ -485,7 +485,7 @@ export class RendererController implements RendererControllable {
       typeof args[4] === 'number' &&
       typeof args[5] === 'number' &&
       typeof args[6] === 'string' &&
-      typeof args[7] === 'boolean'
+      (typeof args[7] === 'boolean' || typeof args[7] === 'undefined')
     ) {
       this.renderer.fillEllipse(
         args[0].x,
@@ -509,7 +509,7 @@ export class RendererController implements RendererControllable {
       typeof args[5] === 'number' &&
       typeof args[6] === 'number' &&
       typeof args[7] === 'string' &&
-      typeof args[8] === 'boolean'
+      (typeof args[8] === 'boolean' || typeof args[8] === 'undefined')
     ) {
       this.renderer.fillEllipse(
         args[0],
@@ -566,7 +566,7 @@ export class RendererController implements RendererControllable {
       typeof args[5] === 'number' &&
       typeof args[6] === 'number' &&
       typeof args[7] === 'string' &&
-      typeof args[8] === 'boolean'
+      (typeof args[8] === 'boolean' || typeof args[8] === 'undefined')
     ) {
       this.renderer.strokeEllipse(
         args[0].x,
@@ -592,7 +592,7 @@ export class RendererController implements RendererControllable {
       typeof args[6] === 'number' &&
       typeof args[7] === 'number' &&
       typeof args[8] === 'string' &&
-      typeof args[9] === 'boolean'
+      (typeof args[9] === 'boolean' || typeof args[9] === 'undefined')
     ) {
       this.renderer.strokeEllipse(
         args[0],
@@ -684,10 +684,10 @@ export class RendererController implements RendererControllable {
       typeof args[0] === 'string' &&
       isPointable(args[1]) &&
       typeof args[2] === 'string' &&
-      typeof args[3] === 'number' &&
-      isFontable(args[4]) &&
-      typeof args[5] === 'string' &&
-      typeof args[6] === 'string'
+      (typeof args[3] === 'number' || typeof args[3] === 'undefined') &&
+      (isFontable(args[4]) || typeof args[4] === 'undefined') &&
+      (typeof args[5] === 'string' || typeof args[5] === 'undefined') &&
+      (typeof args[6] === 'string' || typeof args[6] === 'undefined')
     ) {
       this.renderer.fillText(
         args[0],
@@ -706,10 +706,10 @@ export class RendererController implements RendererControllable {
       typeof args[1] === 'number' &&
       typeof args[2] === 'number' &&
       typeof args[3] === 'string' &&
-      typeof args[4] === 'number' &&
-      isFontable(args[5]) &&
-      typeof args[6] === 'string' &&
-      typeof args[7] === 'string'
+      (typeof args[4] === 'number' || typeof args[4] === 'undefined') &&
+      (isFontable(args[5]) || typeof args[5] === 'undefined') &&
+      (typeof args[6] === 'string' || typeof args[6] === 'undefined') &&
+      (typeof args[7] === 'string' || typeof args[7] === 'undefined')
     ) {
       this.renderer.fillText(
         args[0],
@@ -757,10 +757,10 @@ export class RendererController implements RendererControllable {
       isPointable(args[1]) &&
       typeof args[2] === 'number' &&
       typeof args[3] === 'string' &&
-      typeof args[4] === 'number' &&
-      isFontable(args[5]) &&
-      typeof args[6] === 'string' &&
-      typeof args[7] === 'string'
+      (typeof args[4] === 'number' || typeof args[4] === 'undefined') &&
+      (isFontable(args[5]) || typeof args[5] === 'undefined') &&
+      (typeof args[6] === 'string' || typeof args[6] === 'undefined') &&
+      (typeof args[7] === 'string' || typeof args[7] === 'undefined')
     ) {
       this.renderer.strokeText(
         args[0],
@@ -781,10 +781,10 @@ export class RendererController implements RendererControllable {
       typeof args[2] === 'number' &&
       typeof args[3] === 'number' &&
       typeof args[4] === 'string' &&
-      typeof args[5] === 'number' &&
-      isFontable(args[6]) &&
-      typeof args[7] === 'string' &&
-      typeof args[8] === 'string'
+      (typeof args[5] === 'number' || typeof args[5] === 'undefined') &&
+      (isFontable(args[6]) || typeof args[6] === 'undefined') &&
+      (typeof args[7] === 'string' || typeof args[7] === 'undefined') &&
+      (typeof args[8] === 'string' || typeof args[8] === 'undefined')
     ) {
       this.renderer.strokeText(
         args[0],
@@ -819,7 +819,11 @@ export class RendererController implements RendererControllable {
           height?: number
         ]
   ) {
-    if (isRenderImage(args[0]) && isPointable(args[1]) && isSizeable(args[2])) {
+    if (
+      isRenderImage(args[0]) &&
+      isPointable(args[1]) &&
+      (isSizeable(args[2]) || typeof args[2] === 'undefined')
+    ) {
       this.renderer.img(
         args[0],
         args[1].x,
@@ -832,8 +836,8 @@ export class RendererController implements RendererControllable {
     if (
       isRenderImage(args[0]) &&
       isPointable(args[1]) &&
-      typeof args[2] === 'number' &&
-      typeof args[3] === 'number'
+      (typeof args[2] === 'number' || typeof args[2] === 'undefined') &&
+      (typeof args[3] === 'number' || typeof args[3] === 'undefined')
     ) {
       this.renderer.img(args[0], args[1].x, args[1].y, args[2], args[3])
       return
@@ -842,7 +846,7 @@ export class RendererController implements RendererControllable {
       isRenderImage(args[0]) &&
       typeof args[1] === 'number' &&
       typeof args[2] === 'number' &&
-      isSizeable(args[3])
+      (isSizeable(args[3]) || typeof args[3] === 'undefined')
     ) {
       this.renderer.img(
         args[0],
@@ -857,8 +861,8 @@ export class RendererController implements RendererControllable {
       isRenderImage(args[0]) &&
       typeof args[1] === 'number' &&
       typeof args[2] === 'number' &&
-      typeof args[3] === 'number' &&
-      typeof args[4] === 'number'
+      (typeof args[3] === 'number' || typeof args[3] === 'undefined') &&
+      (typeof args[4] === 'number' || typeof args[4] === 'undefined')
     ) {
       this.renderer.img(args[0], args[1], args[2], args[3], args[4])
       return
