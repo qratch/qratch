@@ -1,4 +1,7 @@
 import { Fontable } from './Fontable'
+import { isFontSize } from './isFontSize'
+import { isFontStyle } from './isFontStyle'
+import { isFontWeight } from './isFontWeight'
 
 /**
  * returns whether the given value is a fontable object.
@@ -7,5 +10,10 @@ import { Fontable } from './Fontable'
  */
 // eslint-disable-next-line
 export const isFontable = (value: any): value is Fontable => {
-  return typeof value['font'] === 'string' && typeof value['size'] === 'number'
+  const isFont = typeof value['font'] === 'string'
+  const isSize = isFontSize(value['size'])
+  const isStyle = isFontStyle(value['style'])
+  const isWeight = isFontWeight(value['weight'])
+
+  return isFont && isSize && isStyle && isWeight
 }

@@ -1,3 +1,7 @@
+import { FontSize } from './FontSize'
+import { FontStyle } from './FontStyle'
+import { FontWeight } from './FontWeight'
+
 /**
  * Fontable interface.
  */
@@ -5,10 +9,20 @@ export interface Fontable {
   /**
    * font name.
    */
-  font: string
+  font?: string
 
   /**
-   * font size(`px`).
+   * font size.
    */
-  size: number
+  size?: FontSize
+
+  /**
+   * font style.
+   */
+  style?: FontStyle
+
+  /**
+   * font weight.
+   */
+  weight?: FontWeight
 }
