@@ -21,4 +21,38 @@ c.fillPolygon(
   'green'
 )
 c.fillRect(200, 0, 64, 32, 'blue')
-c.fillText('hello qratch', 0, 64, '#202020')
+c.fillText(
+  'Hello Qratch',
+  0,
+  64,
+  'red',
+  undefined,
+  {
+    font: 'Arial',
+    size: 32,
+  },
+  'left',
+  'middle'
+)
+c.img(r['canvas'], 0, 128, 200, 200)
+c.line(10, 200, 300, 180, 4, 'butt', 'red')
+c.strokeArc(32, 240, 16, 0, Math.PI, 8, 'blue')
+c.strokeArc(32, 240, 16, 0, Math.PI, 8, 'red', true)
+c.strokeEllipse(128, 240, 32, 16, Math.PI / 3, Math.PI / 3, Math.PI, 4, 'green')
+c.strokeEllipse(
+  128,
+  240,
+  32,
+  16,
+  Math.PI / 3,
+  Math.PI / 3,
+  Math.PI,
+  4,
+  'blue',
+  true
+)
+c.strokeRect(100, 280, 64, 32, 12, 'blue')
+c.strokeText('Hello Qratch', 100, 340, 4, 'red', 100, {
+  font: 'Arial',
+  size: '32px',
+})
