@@ -201,6 +201,7 @@ export interface Renderable extends Component {
    * @param x x position.
    * @param y y position.
    * @param style style.
+   * @param maxWidth max width.
    * @param font font.
    * @param textAlign align.
    * @param textBaseline baseline.
@@ -210,6 +211,7 @@ export interface Renderable extends Component {
     x: number,
     y: number,
     style: RenderStyle,
+    maxWidth?: number,
     font?: string,
     textAlign?: RenderTextAlign,
     textBaseline?: RenderTextBaseline
@@ -222,18 +224,22 @@ export interface Renderable extends Component {
    * @param x x position.
    * @param y y position.
    * @param style style.
+   * @param lineWidth line width.
+   * @param maxWidth max width.
    * @param font font.
    * @param textAlign align.
-   * @param lineWidth line width.
+   * @param textBaseline baseline.
    */
   strokeText(
     text: string,
     x: number,
     y: number,
+    lineWidth: number,
     style: RenderStyle,
-    font: string,
-    textAlign: RenderTextAlign,
-    lineWidth: number
+    maxWidth?: number,
+    font?: string,
+    textAlign?: RenderTextAlign,
+    textBaseline?: RenderTextBaseline
   ): void
 
   /**
