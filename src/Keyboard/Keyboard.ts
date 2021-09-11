@@ -1,25 +1,27 @@
+import { KeyCode } from './KeyCode'
+
 /**
  * Keyboard interface.
  */
-export interface Keyboard<Code extends string> {
+export interface Keyboard {
   /**
    * returns `true` while the key is pressed.
    *
    * @param code code.
    */
-  pressed(code: Code): boolean
+  pressed(code: KeyCode): boolean
 
   /**
    * returns `true` the moment the key is up.
    *
    * @param code code.
    */
-  up(code: Code): boolean
+  up(code: KeyCode): boolean
 
   /**
    * returns `true` the moment the key is down.
    *
    * @param code code.
    */
-  down(code: Code): boolean
+  down(code: KeyCode): boolean
 }
