@@ -31,21 +31,26 @@ export class Vec2 implements Vectorable2 {
    */
   constructor(value: number)
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-  constructor(...args: any[]) {
-    if (isPointable(args[0])) {
-      this.x = args[0].x ?? 0
-      this.y = args[0].y ?? 0
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  constructor(
+    ...args: [pos?: Pointable] | [x?: number, y?: number] | [v?: number]
+  ) {
+    if (isPointable(args[0]) || typeof args[0] === 'undefined') {
+      this.x = args[0]?.x ?? 0
+      this.y = args[0]?.y ?? 0
 
       return this
     }
-    if (typeof args[0] === 'number' && typeof args[1] === 'number') {
+    if (
+      (typeof args[0] === 'number' || typeof args[0] === 'undefined') &&
+      (typeof args[1] === 'number' || typeof args[1] === 'undefined')
+    ) {
       this.x = args[0] ?? 0
       this.y = args[1] ?? 0
 
       return this
     }
-    if (typeof args[0] === 'number') {
+    if (typeof args[0] === 'number' || typeof args[0] === 'undefined') {
       this.x = args[0] ?? 0
       this.y = args[0] ?? 0
 
@@ -57,8 +62,14 @@ export class Vec2 implements Vectorable2 {
     )
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-  set(...args: any[]) {
+  set(pos: Pointable): this
+
+  set(x: number, y: number): this
+
+  set(value: number): this
+
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  set(...args: [pos: Pointable] | [x: number, y: number] | [value: number]) {
     if (isPointable(args[0])) {
       this.x = args[0].x
       this.y = args[0].y
@@ -81,8 +92,14 @@ export class Vec2 implements Vectorable2 {
     throw new TypeError(this.constructor.name + '.set: invalid arguments.')
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-  add(...args: any[]) {
+  add(pos: Pointable): this
+
+  add(x: number, y: number): this
+
+  add(value: number): this
+
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  add(...args: [pos: Pointable] | [x: number, y: number] | [value: number]) {
     if (isPointable(args[0])) {
       this.x += args[0].x
       this.y += args[0].y
@@ -105,8 +122,14 @@ export class Vec2 implements Vectorable2 {
     throw new TypeError(this.constructor.name + '.add: invalid arguments.')
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-  sub(...args: any[]) {
+  sub(pos: Pointable): this
+
+  sub(x: number, y: number): this
+
+  sub(value: number): this
+
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  sub(...args: [pos: Pointable] | [x: number, y: number] | [value: number]) {
     if (isPointable(args[0])) {
       this.x -= args[0].x
       this.y -= args[0].y
@@ -129,8 +152,14 @@ export class Vec2 implements Vectorable2 {
     throw new TypeError(this.constructor.name + '.sub: invalid arguments.')
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-  mul(...args: any[]) {
+  mul(pos: Pointable): this
+
+  mul(x: number, y: number): this
+
+  mul(value: number): this
+
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  mul(...args: [pos: Pointable] | [x: number, y: number] | [value: number]) {
     if (isPointable(args[0])) {
       this.x *= args[0].x
       this.y *= args[0].y
@@ -153,8 +182,14 @@ export class Vec2 implements Vectorable2 {
     throw new TypeError(this.constructor.name + '.mul: invalid arguments.')
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-  div(...args: any[]) {
+  div(pos: Pointable): this
+
+  div(x: number, y: number): this
+
+  div(value: number): this
+
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  div(...args: [pos: Pointable] | [x: number, y: number] | [value: number]) {
     if (isPointable(args[0])) {
       this.x /= args[0].x
       this.y /= args[0].y
@@ -177,8 +212,14 @@ export class Vec2 implements Vectorable2 {
     throw new TypeError(this.constructor.name + '.div: invalid arguments.')
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-  getAdd(...args: any[]) {
+  getAdd(pos: Pointable): this
+
+  getAdd(x: number, y: number): this
+
+  getAdd(value: number): this
+
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  getAdd(...args: [pos: Pointable] | [x: number, y: number] | [value: number]) {
     if (isPointable(args[0])) {
       return new Vec2(this.x + args[0].x, this.y + args[0].y)
     }
@@ -192,8 +233,14 @@ export class Vec2 implements Vectorable2 {
     throw new TypeError(this.constructor.name + '.getAdd: invalid arguments.')
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-  getSub(...args: any[]) {
+  getSub(pos: Pointable): this
+
+  getSub(x: number, y: number): this
+
+  getSub(value: number): this
+
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  getSub(...args: [pos: Pointable] | [x: number, y: number] | [value: number]) {
     if (isPointable(args[0])) {
       return new Vec2(this.x - args[0].x, this.y - args[0].y)
     }
@@ -207,8 +254,14 @@ export class Vec2 implements Vectorable2 {
     throw new TypeError(this.constructor.name + '.getSub: invalid arguments.')
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-  getMul(...args: any[]) {
+  getMul(pos: Pointable): this
+
+  getMul(x: number, y: number): this
+
+  getMul(value: number): this
+
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  getMul(...args: [pos: Pointable] | [x: number, y: number] | [value: number]) {
     if (isPointable(args[0])) {
       return new Vec2(this.x * args[0].x, this.y * args[0].y)
     }
@@ -222,8 +275,14 @@ export class Vec2 implements Vectorable2 {
     throw new TypeError(this.constructor.name + '.getMul: invalid arguments.')
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-  getDiv(...args: any[]) {
+  getDiv(pos: Pointable): this
+
+  getDiv(x: number, y: number): this
+
+  getDiv(value: number): this
+
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  getDiv(...args: [pos: Pointable] | [x: number, y: number] | [value: number]) {
     if (isPointable(args[0])) {
       return new Vec2(this.x / args[0].x, this.y / args[0].y)
     }
