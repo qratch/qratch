@@ -56,4 +56,4 @@ export const KEY_CODES = [
   ...NAVIGATIONS,
   ...EDITINGS,
   ...UIS,
-]
+] as KeyCode[]
