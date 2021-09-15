@@ -27,15 +27,15 @@ const WHITESPACES = ['Enter', 'Tab', 'Space'] as const
 type Whitespaces = Items<typeof WHITESPACES>
 
 // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values#navigation_keys
-const NAVIGATIONS = ['ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowUp']
+const NAVIGATIONS = ['ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowUp'] as const
 type Navigations = Items<typeof NAVIGATIONS>
 
 // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values#editing_keys
-const EDITINGS = ['Backsapce']
+const EDITINGS = ['Backsapce'] as const
 type Editings = Items<typeof EDITINGS>
 
 // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values#ui_keys
-const UIS = ['Escape']
+const UIS = ['Escape'] as const
 type UIs = Items<typeof UIS>
 
 /**
