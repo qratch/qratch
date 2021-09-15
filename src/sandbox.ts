@@ -1,6 +1,7 @@
 import { CanvasRenderer } from './CanvasRenderer/CanvasRenderer'
 import { HTMLElementCursor } from './HTMLElementCursor/HTMLElementCursor'
 import { HTMLElementKeyboard } from './HTMLElementKeyboard/HTMLElementKeyboard'
+import { HTMLElementMouse } from './HTMLElementMouse/HTMLElementMouse'
 import { RendererController } from './RendererController/RendererController'
 import { Vec2 } from './Vec2/Vec2'
 
@@ -14,6 +15,7 @@ const r = new CanvasRenderer(canvas as HTMLCanvasElement)
 const c = new RendererController(r)
 const keyboard = new HTMLElementKeyboard(canvas)
 const cursor = new HTMLElementCursor(canvas)
+const mouse = new HTMLElementMouse(canvas)
 let count = 0
 let fpsCount = 0
 let fps = 0
@@ -42,12 +44,13 @@ const frame = () => {
   c.fillRect(0, 0, 480, 480, 'white')
   c.fillText(`${count}:${fps}`, 8, 16, 'black')
 
-  pos.set(cursor)
+  pos.add(mouse.wheel() / 100)
 
-  c.fillArc(pos, 16, 0, Math.PI * 2, 'blue')
+  c.fillArc(pos, 16, 0, Math.PI * 2, mouse.up('Left') ? 'blue' : 'red')
 
   keyboard.onFrameEnd()
   cursor.onFrameEnd()
+  mouse.onFrameEnd()
   requestAnimationFrame(frame)
 }
 
