@@ -1,5 +1,7 @@
 import { CanvasRenderer } from './CanvasRenderer/CanvasRenderer'
+import { HTMLElementKeyboard } from './HTMLElementKeyboard/HTMLElementKeyboard'
 import { RendererController } from './RendererController/RendererController'
+import { Vec2 } from './Vec2/Vec2'
 
 const canvas = document.getElementById('canvas')
 
@@ -9,50 +11,36 @@ if (!canvas) {
 
 const r = new CanvasRenderer(canvas as HTMLCanvasElement)
 const c = new RendererController(r)
+const keyboard = new HTMLElementKeyboard(document.body)
+let count = 0
+const pos = new Vec2(0, 0)
 
-c.fillArc(16, 16, 16, 0, Math.PI * 2, 'red')
-c.fillEllipse(64, 24, 16, 24, 0, 0, Math.PI * 2, 'blue')
-c.fillPolygon(
-  [
-    [100, 0],
-    [100, 20],
-    [150, 50],
-  ],
-  'green'
-)
-c.fillRect(200, 0, 64, 32, 'blue')
-c.fillText(
-  'Hello Qratch',
-  0,
-  64,
-  'red',
-  undefined,
-  {
-    font: 'Arial',
-    size: 32,
-  },
-  'left',
-  'middle'
-)
-c.img(r['canvas'], 0, 128, 200, 200)
-c.line(10, 200, 300, 180, 4, 'butt', 'red')
-c.strokeArc(32, 240, 16, 0, Math.PI, 8, 'blue')
-c.strokeArc(32, 240, 16, 0, Math.PI, 8, 'red', true)
-c.strokeEllipse(128, 240, 32, 16, Math.PI / 3, Math.PI / 3, Math.PI, 4, 'green')
-c.strokeEllipse(
-  128,
-  240,
-  32,
-  16,
-  Math.PI / 3,
-  Math.PI / 3,
-  Math.PI,
-  4,
-  'blue',
-  true
-)
-c.strokeRect(100, 280, 64, 32, 12, 'blue')
-c.strokeText('Hello Qratch', 100, 340, 4, 'red', 100, {
-  font: 'Arial',
-  size: '32px',
-})
+const frame = () => {
+  count++
+
+  if (keyboard.pressed('ArrowLeft')) {
+    pos.x -= 1
+  }
+
+  if (keyboard.pressed('ArrowRight')) {
+    pos.x += 1
+  }
+
+  if (keyboard.pressed('ArrowUp')) {
+    pos.y -= 1
+  }
+
+  if (keyboard.pressed('Space')) {
+    pos.y += 1
+  }
+
+  c.fillRect(0, 0, 480, 480, 'white')
+  c.fillText(`${count}`, 8, 16, 'black')
+
+  c.fillArc(pos, 16, 0, Math.PI * 2, 'blue')
+
+  keyboard.onFrameEnd()
+  requestAnimationFrame(frame)
+}
+
+frame()
