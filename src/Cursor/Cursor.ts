@@ -1,10 +1,11 @@
+import { Component } from '@/Component/Component'
 import { Pointable } from '@/Pointable/Pointable'
 import { CursorStyle } from './CursorStyle'
 
 /**
  * Cursor interface.
  */
-export interface Cursor {
+export interface Cursor extends Component {
   /**
    * x position.
    */
