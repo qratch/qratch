@@ -9,9 +9,9 @@ import { RenderTextBaseline } from '@/Renderer/RenderTextBaseline'
 import { Sizeable } from '@/Size/Sizeable'
 
 /**
- * RendererControllable interface.
+ * Drawable interface.
  */
-export interface RendererControllable {
+export interface Drawable {
   /**
    * draw filled rect.
    *

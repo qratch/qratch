@@ -13,12 +13,12 @@ import { RenderTextAlign } from '@/Renderer/RenderTextAlign'
 import { RenderTextBaseline } from '@/Renderer/RenderTextBaseline'
 import { isSizeable } from '@/Size/isSizeable'
 import { Sizeable } from '@/Size/Sizeable'
-import { RendererControllable } from './RendererControllable'
+import { Drawable } from './Drawable'
 
 /**
- * RendererController class.
+ * Drawer class.
  */
-export class RendererController implements RendererControllable {
+export class Drawer implements Drawable {
   constructor(protected readonly renderer: Renderable) {}
 
   fillRect(pos: Pointable, size: Sizeable, style: RenderStyle): void

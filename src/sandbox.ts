@@ -2,7 +2,7 @@ import { CanvasRenderer } from './CanvasRenderer/CanvasRenderer'
 import { HTMLElementCursor } from './HTMLElementCursor/HTMLElementCursor'
 import { HTMLElementKeyboard } from './HTMLElementKeyboard/HTMLElementKeyboard'
 import { HTMLElementMouse } from './HTMLElementMouse/HTMLElementMouse'
-import { RendererController } from './RendererController/RendererController'
+import { Drawer } from './Drawer/Drawer'
 import { Vec2 } from './Vec2/Vec2'
 
 const canvas = document.getElementById('canvas')
@@ -12,7 +12,7 @@ if (!canvas) {
 }
 
 const r = new CanvasRenderer(canvas as HTMLCanvasElement)
-const c = new RendererController(r)
+const c = new Drawer(r)
 const keyboard = new HTMLElementKeyboard(canvas)
 const cursor = new HTMLElementCursor(canvas)
 const mouse = new HTMLElementMouse(canvas)
