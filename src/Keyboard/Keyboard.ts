@@ -1,9 +1,10 @@
+import { Component } from '@/Component/Component'
 import { KeyCode } from './KeyCode'
 
 /**
  * Keyboard interface.
  */
-export interface Keyboard {
+export interface Keyboard extends Component {
   /**
    * returns `true` while the key is pressed.
    *
