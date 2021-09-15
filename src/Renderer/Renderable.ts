@@ -1,4 +1,5 @@
 import { Component } from '@/Component/Component'
+import { Pointable } from '@/Pointable/Pointable'
 import { RenderImage } from './RenderImage'
 import { RenderLineCap } from './RenderLineCap'
 import { RenderPolygonPoint } from './RenderPolygonPoint'
@@ -19,6 +20,18 @@ export interface Renderable extends Component {
    * display height.
    */
   readonly height: number
+
+  /**
+   * display center.
+   */
+  center(): Pointable
+
+  /**
+   * fill.
+   *
+   * @param style style.
+   */
+  fill(style: RenderStyle): void
 
   /**
    * draw filled rectangle.

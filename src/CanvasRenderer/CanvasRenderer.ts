@@ -1,3 +1,4 @@
+import { Pointable } from '@/Pointable/Pointable'
 import { Renderable } from '@/Renderer/Renderable'
 import { RenderLineCap } from '@/Renderer/RenderLineCap'
 import { RenderPolygonPoint } from '@/Renderer/RenderPolygonPoint'
@@ -27,6 +28,13 @@ export class CanvasRenderer implements Renderable {
     return this.canvas.height
   }
 
+  center(): Pointable {
+    return {
+      x: this.width / 2,
+      y: this.height / 2,
+    }
+  }
+
   /**
    * CanvasRenderer constructor.
    *
@@ -46,6 +54,10 @@ export class CanvasRenderer implements Renderable {
     }
 
     this.context = context
+  }
+
+  fill(style: RenderStyle): void {
+    this.fillRect(0, 0, this.width, this.height, style)
   }
 
   fillRect(
