@@ -6,6 +6,7 @@ import { RenderPolygonPoint } from '@/Renderer/RenderPolygonPoint'
 import { RenderStyle } from '@/Renderer/RenderStyle'
 import { RenderTextAlign } from '@/Renderer/RenderTextAlign'
 import { RenderTextBaseline } from '@/Renderer/RenderTextBaseline'
+import { RenderStylable } from '@/RenderStyleable/RenderStylable'
 import { Sizeable } from '@/Size/Sizeable'
 
 /**
@@ -25,6 +26,15 @@ export interface Drawable {
    * draw filled rect.
    *
    * @param pos pos.
+   * @param size size.
+   * @param style style.
+   */
+  fillRect(pos: Pointable, size: Sizeable, style: RenderStylable): void
+
+  /**
+   * draw filled rect.
+   *
+   * @param pos pos.
    * @param width width.
    * @param height height.
    * @param style style.
@@ -34,6 +44,21 @@ export interface Drawable {
     width: number,
     height: number,
     style: RenderStyle
+  ): void
+
+  /**
+   * draw filled rect.
+   *
+   * @param pos pos.
+   * @param width width.
+   * @param height height.
+   * @param style style.
+   */
+  fillRect(
+    pos: Pointable,
+    width: number,
+    height: number,
+    style: RenderStylable
   ): void
 
   /**
@@ -51,6 +76,16 @@ export interface Drawable {
    *
    * @param x x.
    * @param y y.
+   * @param size size.
+   * @param style style.
+   */
+  fillRect(x: number, y: number, size: Sizeable, style: RenderStylable): void
+
+  /**
+   * draw filled rect.
+   *
+   * @param x x.
+   * @param y y.
    * @param width width.
    * @param height height.
    * @param style style.
@@ -64,6 +99,23 @@ export interface Drawable {
   ): void
 
   /**
+   * draw filled rect.
+   *
+   * @param x x.
+   * @param y y.
+   * @param width width.
+   * @param height height.
+   * @param style style.
+   */
+  fillRect(
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+    style: RenderStylable
+  ): void
+
+  /**
    * draw stroked rect.
    *
    * @param pos pos.
@@ -82,6 +134,21 @@ export interface Drawable {
    * draw stroked rect.
    *
    * @param pos pos.
+   * @param size size.
+   * @param lineWidth lineWidth.
+   * @param style style.
+   */
+  strokeRect(
+    pos: Pointable,
+    size: Sizeable,
+    lineWidth: number,
+    style: RenderStylable
+  ): void
+
+  /**
+   * draw stroked rect.
+   *
+   * @param pos pos.
    * @param width width.
    * @param height height.
    * @param lineWidth lineWidth.
@@ -93,6 +160,23 @@ export interface Drawable {
     height: number,
     lineWidth: number,
     style: RenderStyle
+  ): void
+
+  /**
+   * draw stroked rect.
+   *
+   * @param pos pos.
+   * @param width width.
+   * @param height height.
+   * @param lineWidth lineWidth.
+   * @param style style.
+   */
+  strokeRect(
+    pos: Pointable,
+    width: number,
+    height: number,
+    lineWidth: number,
+    style: RenderStylable
   ): void
 
   /**
@@ -117,6 +201,23 @@ export interface Drawable {
    *
    * @param x x.
    * @param y y.
+   * @param size size.
+   * @param lineWidth lineWidth.
+   * @param style style.
+   */
+  strokeRect(
+    x: number,
+    y: number,
+    size: Sizeable,
+    lineWidth: number,
+    style: RenderStylable
+  ): void
+
+  /**
+   * draw stroked rect.
+   *
+   * @param x x.
+   * @param y y.
    * @param width width.
    * @param height height.
    * @param lineWidth lineWidth.
@@ -129,6 +230,25 @@ export interface Drawable {
     height: number,
     lineWidth: number,
     style: RenderStyle
+  ): void
+
+  /**
+   * draw stroked rect.
+   *
+   * @param x x.
+   * @param y y.
+   * @param width width.
+   * @param height height.
+   * @param lineWidth lineWidth.
+   * @param style style.
+   */
+  strokeRect(
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+    lineWidth: number,
+    style: RenderStylable
   ): void
 
   /**
@@ -152,6 +272,23 @@ export interface Drawable {
    * draw line.
    *
    * @param p1 p1.
+   * @param p2 p2.
+   * @param lineWidth lineWidth.
+   * @param lineCap lineCap.
+   * @param style style.
+   */
+  line(
+    p1: Pointable,
+    p2: Pointable,
+    lineWidth: number,
+    lineCap: RenderLineCap,
+    style: RenderStylable
+  ): void
+
+  /**
+   * draw line.
+   *
+   * @param p1 p1.
    * @param x2 x2.
    * @param y2 y2.
    * @param lineWidth lineWidth.
@@ -165,6 +302,25 @@ export interface Drawable {
     lineWidth: number,
     lineCap: RenderLineCap,
     style: RenderStyle
+  ): void
+
+  /**
+   * draw line.
+   *
+   * @param p1 p1.
+   * @param x2 x2.
+   * @param y2 y2.
+   * @param lineWidth lineWidth.
+   * @param lineCap lineCap.
+   * @param style style.
+   */
+  line(
+    p1: Pointable,
+    x2: number,
+    y2: number,
+    lineWidth: number,
+    lineCap: RenderLineCap,
+    style: RenderStylable
   ): void
 
   /**
@@ -191,6 +347,25 @@ export interface Drawable {
    *
    * @param x1 x1.
    * @param y1 y1.
+   * @param p2 p2.
+   * @param lineWidth lineWidth.
+   * @param lineCap lineCap.
+   * @param style style.
+   */
+  line(
+    x1: number,
+    y1: number,
+    p2: Pointable,
+    lineWidth: number,
+    lineCap: RenderLineCap,
+    style: RenderStylable
+  ): void
+
+  /**
+   * draw line.
+   *
+   * @param x1 x1.
+   * @param y1 y1.
    * @param x2 x2.
    * @param y2 y2.
    * @param lineWidth lineWidth.
@@ -205,6 +380,27 @@ export interface Drawable {
     lineWidth: number,
     lineCap: RenderLineCap,
     style: RenderStyle
+  ): void
+
+  /**
+   * draw line.
+   *
+   * @param x1 x1.
+   * @param y1 y1.
+   * @param x2 x2.
+   * @param y2 y2.
+   * @param lineWidth lineWidth.
+   * @param lineCap lineCap.
+   * @param style style.
+   */
+  line(
+    x1: number,
+    y1: number,
+    x2: number,
+    y2: number,
+    lineWidth: number,
+    lineCap: RenderLineCap,
+    style: RenderStylable
   ): void
 
   /**
@@ -229,6 +425,25 @@ export interface Drawable {
   /**
    * draw filled arc.
    *
+   * @param pos pos.
+   * @param radius radius.
+   * @param startAngle startAngle.
+   * @param endAngle endAngle.
+   * @param style style.
+   * @param anticlockwise anticlockwise.
+   */
+  fillArc(
+    pos: Pointable,
+    radius: number,
+    startAngle: number,
+    endAngle: number,
+    style: RenderStylable,
+    anticlockwise?: boolean
+  ): void
+
+  /**
+   * draw filled arc.
+   *
    * @param x x.
    * @param y y.
    * @param radius radius.
@@ -244,6 +459,27 @@ export interface Drawable {
     startAngle: number,
     endAngle: number,
     style: RenderStyle,
+    anticlockwise?: boolean
+  ): void
+
+  /**
+   * draw filled arc.
+   *
+   * @param x x.
+   * @param y y.
+   * @param radius radius.
+   * @param startAngle startAngle.
+   * @param endAngle endAngle.
+   * @param style style.
+   * @param anticlockwise anticlockwise.
+   */
+  fillArc(
+    x: number,
+    y: number,
+    radius: number,
+    startAngle: number,
+    endAngle: number,
+    style: RenderStylable,
     anticlockwise?: boolean
   ): void
 
@@ -271,6 +507,27 @@ export interface Drawable {
   /**
    * draw stroked arc.
    *
+   * @param pos pos.
+   * @param radius radius.
+   * @param startAngle startAngle.
+   * @param endAngle endAngle.
+   * @param lineWidth lineWidth.
+   * @param style style.
+   * @param anticlockwise anticlockwise.
+   */
+  strokeArc(
+    pos: Pointable,
+    radius: number,
+    startAngle: number,
+    endAngle: number,
+    lineWidth: number,
+    style: RenderStylable,
+    anticlockwise?: boolean
+  ): void
+
+  /**
+   * draw stroked arc.
+   *
    * @param x x.
    * @param y y.
    * @param radius radius.
@@ -287,6 +544,52 @@ export interface Drawable {
     startAngle: number,
     endAngle: number,
     lineWidth: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
+  ): void
+
+  /**
+   * draw stroked arc.
+   *
+   * @param x x.
+   * @param y y.
+   * @param radius radius.
+   * @param startAngle startAngle.
+   * @param endAngle endAngle.
+   * @param lineWidth lineWidth.
+   * @param style style.
+   * @param anticlockwise anticlockwise.
+   */
+  strokeArc(
+    x: number,
+    y: number,
+    radius: number,
+    startAngle: number,
+    endAngle: number,
+    lineWidth: number,
+    style: RenderStylable,
+    anticlockwise?: boolean
+  ): void
+
+  /**
+   * draw filled arc.
+   *
+   * @param pos pos.
+   * @param radiusX radiusX.
+   * @param radiusY radiusY.
+   * @param rotation rotation.
+   * @param startAngle startAngle.
+   * @param endAngle endAngle.
+   * @param style style.
+   * @param anticlockwise anticlockwise.
+   */
+  fillEllipse(
+    pos: Pointable,
+    radiusX: number,
+    radiusY: number,
+    rotation: number,
+    startAngle: number,
+    endAngle: number,
     style: RenderStyle,
     anticlockwise?: boolean
   ): void
@@ -305,6 +608,31 @@ export interface Drawable {
    */
   fillEllipse(
     pos: Pointable,
+    radiusX: number,
+    radiusY: number,
+    rotation: number,
+    startAngle: number,
+    endAngle: number,
+    style: RenderStylable,
+    anticlockwise?: boolean
+  ): void
+
+  /**
+   * draw filled arc.
+   *
+   * @param x x.
+   * @param y y.
+   * @param radiusX radiusX.
+   * @param radiusY radiusY.
+   * @param rotation rotation.
+   * @param startAngle startAngle.
+   * @param endAngle endAngle.
+   * @param style style.
+   * @param anticlockwise anticlockwise.
+   */
+  fillEllipse(
+    x: number,
+    y: number,
     radiusX: number,
     radiusY: number,
     rotation: number,
@@ -335,7 +663,7 @@ export interface Drawable {
     rotation: number,
     startAngle: number,
     endAngle: number,
-    style: RenderStyle,
+    style: RenderStylable,
     anticlockwise?: boolean
   ): void
 
@@ -367,6 +695,31 @@ export interface Drawable {
   /**
    * draw stroked arc.
    *
+   * @param pos pos.
+   * @param radiusX radiusX.
+   * @param radiusY radiusY.
+   * @param rotation rotation.
+   * @param startAngle startAngle.
+   * @param endAngle endAngle.
+   * @param lineWidth lineWidth.
+   * @param style style.
+   * @param anticlockwise anticlockwise.
+   */
+  strokeEllipse(
+    pos: Pointable,
+    radiusX: number,
+    radiusY: number,
+    rotation: number,
+    startAngle: number,
+    endAngle: number,
+    lineWidth: number,
+    style: RenderStylable,
+    anticlockwise?: boolean
+  ): void
+
+  /**
+   * draw stroked arc.
+   *
    * @param x x.
    * @param y y.
    * @param radiusX radiusX.
@@ -388,6 +741,33 @@ export interface Drawable {
     endAngle: number,
     lineWidth: number,
     style: RenderStyle,
+    anticlockwise?: boolean
+  ): void
+
+  /**
+   * draw stroked arc.
+   *
+   * @param x x.
+   * @param y y.
+   * @param radiusX radiusX.
+   * @param radiusY radiusY.
+   * @param rotation rotation.
+   * @param startAngle startAngle.
+   * @param endAngle endAngle.
+   * @param lineWidth lineWidth.
+   * @param style style.
+   * @param anticlockwise anticlockwise.
+   */
+  strokeEllipse(
+    x: number,
+    y: number,
+    radiusX: number,
+    radiusY: number,
+    rotation: number,
+    startAngle: number,
+    endAngle: number,
+    lineWidth: number,
+    style: RenderStylable,
     anticlockwise?: boolean
   ): void
 
@@ -400,6 +780,17 @@ export interface Drawable {
   fillPolygon(
     points: (RenderPolygonPoint | Pointable)[],
     style: RenderStyle
+  ): void
+
+  /**
+   * draw filled polygon.
+   *
+   * @param points points.
+   * @param style style.
+   */
+  fillPolygon(
+    points: (RenderPolygonPoint | Pointable)[],
+    style: RenderStylable
   ): void
 
   /**
@@ -416,6 +807,19 @@ export interface Drawable {
   ): void
 
   /**
+   * draw stroked polygon.
+   *
+   * @param points points.
+   * @param lineWidth lineWidth.
+   * @param style style.
+   */
+  strokePolygon(
+    points: (RenderPolygonPoint | Pointable)[],
+    lineWidth: number,
+    style: RenderStylable
+  ): void
+
+  /**
    * draw filled text.
    *
    * @param text text.
@@ -440,6 +844,27 @@ export interface Drawable {
    * draw filled text.
    *
    * @param text text.
+   * @param pos pos.
+   * @param style style.
+   * @param maxWidth maxWidth.
+   * @param font font.
+   * @param textAlign textAlign.
+   * @param textBaseline textBaseline.
+   */
+  fillText(
+    text: string,
+    pos: Pointable,
+    style: RenderStylable,
+    maxWidth?: number,
+    font?: Fontable,
+    textAlign?: RenderTextAlign,
+    textBaseline?: RenderTextBaseline
+  ): void
+
+  /**
+   * draw filled text.
+   *
+   * @param text text.
    * @param x x.
    * @param y y.
    * @param style style.
@@ -453,6 +878,29 @@ export interface Drawable {
     x: number,
     y: number,
     style: RenderStyle,
+    maxWidth?: number,
+    font?: Fontable,
+    textAlign?: RenderTextAlign,
+    textBaseline?: RenderTextBaseline
+  ): void
+
+  /**
+   * draw filled text.
+   *
+   * @param text text.
+   * @param x x.
+   * @param y y.
+   * @param style style.
+   * @param maxWidth maxWidth.
+   * @param font font.
+   * @param textAlign textAlign.
+   * @param textBaseline textBaseline.
+   */
+  fillText(
+    text: string,
+    x: number,
+    y: number,
+    style: RenderStylable,
     maxWidth?: number,
     font?: Fontable,
     textAlign?: RenderTextAlign,
@@ -486,6 +934,29 @@ export interface Drawable {
    * draw stroked text.
    *
    * @param text text.
+   * @param pos pos.
+   * @param lineWidth lineWidth.
+   * @param style style.
+   * @param maxWidth maxWidth.
+   * @param font font.
+   * @param textAlign textAlign.
+   * @param textBaseline textBaseline.
+   */
+  strokeText(
+    text: string,
+    pos: Pointable,
+    lineWidth: number,
+    style: RenderStylable,
+    maxWidth?: number,
+    font?: Fontable,
+    textAlign?: RenderTextAlign,
+    textBaseline?: RenderTextBaseline
+  ): void
+
+  /**
+   * draw stroked text.
+   *
+   * @param text text.
    * @param x x.
    * @param y y.
    * @param lineWidth lineWidth.
@@ -501,6 +972,31 @@ export interface Drawable {
     y: number,
     lineWidth: number,
     style: RenderStyle,
+    maxWidth?: number,
+    font?: Fontable,
+    textAlign?: RenderTextAlign,
+    textBaseline?: RenderTextBaseline
+  ): void
+
+  /**
+   * draw stroked text.
+   *
+   * @param text text.
+   * @param x x.
+   * @param y y.
+   * @param lineWidth lineWidth.
+   * @param style style.
+   * @param maxWidth maxWidth.
+   * @param font font.
+   * @param textAlign textAlign.
+   * @param textBaseline textBaseline.
+   */
+  strokeText(
+    text: string,
+    x: number,
+    y: number,
+    lineWidth: number,
+    style: RenderStylable,
     maxWidth?: number,
     font?: Fontable,
     textAlign?: RenderTextAlign,
