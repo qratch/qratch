@@ -4,6 +4,7 @@ import { HTMLElementKeyboard } from './HTMLElementKeyboard/HTMLElementKeyboard'
 import { HTMLElementMouse } from './HTMLElementMouse/HTMLElementMouse'
 import { Drawer } from './Drawer/Drawer'
 import { Vec2 } from './Vec2/Vec2'
+import { Color } from './Color/Color'
 
 const canvas = document.getElementById('canvas')
 
@@ -42,11 +43,17 @@ const frame = () => {
   }
 
   c.fillRect(0, 0, 480, 480, 'white')
-  c.fillText(`${count}:${fps}`, 8, 16, 'black')
+  c.fillText(`${count}:${fps}`, 8, 16, 'rgba(0, 0, 0, 1)')
 
   pos.add(mouse.wheel() / 100)
 
-  c.fillArc(pos, 16, 0, Math.PI * 2, mouse.up('Left') ? 'blue' : 'red')
+  c.fillArc(
+    pos,
+    16,
+    0,
+    Math.PI * 2,
+    mouse.up('Left') ? new Color(0, 0, 1) : new Color(1, 0, 0)
+  )
 
   keyboard.onFrameEnd()
   cursor.onFrameEnd()
@@ -55,6 +62,7 @@ const frame = () => {
 }
 
 frame()
+console.log(Color)
 
 setInterval(() => {
   fps = fpsCount

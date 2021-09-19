@@ -6,10 +6,10 @@ import { RGBA } from './RGBA'
  * Color
  */
 export class Color implements Colorable {
-  r: number
-  g: number
-  b: number
-  a: number
+  r = 0
+  g = 0
+  b = 0
+  a = 1
 
   /**
    * Color constructor
@@ -68,6 +68,7 @@ export class Color implements Colorable {
       typeof args[3] === 'number'
     ) {
       this.set(args[0], args[1], args[2], args[3])
+      return this
     }
     if (
       typeof args[0] === 'number' &&
@@ -75,15 +76,19 @@ export class Color implements Colorable {
       typeof args[2] === 'number'
     ) {
       this.set(args[0], args[1], args[2])
+      return this
     }
     if (typeof args[0] === 'number' && typeof args[1] === 'number') {
       this.set(args[0], args[1])
+      return this
     }
     if (typeof args[0] === 'number') {
       this.set(args[0])
+      return this
     }
     if (isRGBA(args[0])) {
       this.set(args[0].r, args[0].g, args[0].g, args[0].a)
+      return this
     }
 
     throw new TypeError(
@@ -159,6 +164,6 @@ export class Color implements Colorable {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
   toRenderStyle() {
-    return 'rgba(this.r * 255, this.g * 255, this.b * 255, this.a)'
+    return `rgba(${this.r * 255}, ${this.g * 255}, ${this.b * 255}, ${this.a})`
   }
 }
