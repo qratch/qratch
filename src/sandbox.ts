@@ -4,15 +4,6 @@ import { Size } from './Size/Size'
 import { Vec2 } from './Vec2/Vec2'
 
 class Game extends QratchApp {
-  // 自機の位置
-  pos = new Vec2(this.renderer.center())
-
-  // 弾の位置の配列
-  bullets: Vec2[] = []
-
-  // 敵の位置の配列
-  enemies: Vec2[] = []
-
   // 自機のスピード
   readonly playerSpeed = 5
 
@@ -29,19 +20,34 @@ class Game extends QratchApp {
   readonly maxEnemies = 5
 
   // 敵のサイズ
-  readonly enemySize = new Size(16, 16)
+  readonly enemySize = new Size(32, 32)
 
   // 敵のスピード
   readonly enemySpeed = 1
 
-  // スコア
-  score = 0
-
   // ショットできる間隔
   readonly shotDuration = 30
 
+  // 自機の位置
+  playerPos!: Vec2
+
+  // スコア
+  score!: number
+
+  // 弾の位置の配列
+  bullets!: Vec2[]
+
+  // 敵の位置の配列
+  enemies!: Vec2[]
+
   // ショットできるか
-  canShot = false
+  canShot!: boolean
+
+  // ショットカウンタ
+  shotCounter!: number
+
+  // ゲームオーバーフラグ
+  isGameOver!: boolean
 
   // 毎フレーム呼び出される
   frame() {
@@ -52,29 +58,65 @@ class Game extends QratchApp {
     this.draw()
   }
 
+  // 初期化時に呼ばれる
+  init() {
+    this.playerPos = new Vec2(this.renderer.center().x, 400)
+    this.score = 0
+    this.bullets = []
+    this.enemies = []
+    this.canShot = false
+    this.shotCounter = 0
+    this.isGameOver = false
+  }
+
   update() {
-    const { keyboard, renderer, ticker } = this
+    const { keyboard, renderer } = this
+
+    if (this.isGameOver) {
+      if (keyboard.down('Space')) {
+        this.init()
+      }
+
+      return
+    }
 
     // 自機の移動
     if (keyboard.pressed('ArrowLeft')) {
-      this.pos.x -= this.playerSpeed
+      this.playerPos.x -= this.playerSpeed
     }
     if (keyboard.pressed('ArrowRight')) {
-      this.pos.x += this.playerSpeed
+      this.playerPos.x += this.playerSpeed
     }
     if (keyboard.pressed('ArrowUp')) {
-      this.pos.y -= this.playerSpeed
+      this.playerPos.y -= this.playerSpeed
     }
     if (keyboard.pressed('ArrowDown')) {
-      this.pos.y += this.playerSpeed
+      this.playerPos.y += this.playerSpeed
     }
 
+    // 自機が画面外に出ないようにする
+    this.playerPos.x = Math.max(
+      Math.min(this.playerPos.x, this.renderer.width),
+      0
+    )
+    this.playerPos.y = Math.max(
+      Math.min(this.playerPos.y, this.renderer.height),
+      0
+    )
+
     // ショットできるかをフレームから計算
-    this.canShot = ticker.frames() % this.shotDuration === 0
+    this.shotCounter++
+    this.shotCounter = this.shotCounter % this.shotDuration
+
+    if (this.shotCounter === 0) {
+      this.canShot = true
+    }
 
     // スペースが押されたら弾を発射
     if (keyboard.pressed('Space') && this.canShot) {
-      this.bullets.push(new Vec2(this.pos))
+      this.bullets.push(new Vec2(this.playerPos))
+      this.shotCounter = 0
+      this.canShot = false
     }
 
     // 敵が5匹より少なければ敵を出現
@@ -84,38 +126,29 @@ class Game extends QratchApp {
       )
     }
 
-    this.bullets = this.bullets.filter((bullet) => {
-      // 弾の移動
-      bullet.y -= this.bulletSpeed
-
-      // 弾が画面上部にあたったら削除
-      return bullet.y > -this.bulletSize.height
-    })
-
     this.enemies = this.enemies.filter((enemy) => {
-      // 敵を移動
-      enemy.y += this.enemySpeed
-
       const enemyLeft = enemy.x - this.enemySize.width / 2
       const enemyRight = enemy.x + this.enemySize.width / 2
       const enemyTop = enemy.y - this.enemySize.height / 2
       const enemyBottom = enemy.y + this.enemySize.height / 2
 
+      // 敵に弾が触れているかを表すフラグ
       let hit = false
 
-      // 敵と弾の当たり判定
-      this.bullets.filter((bullet) => {
+      this.bullets = this.bullets.filter((bullet) => {
         const bulletLeft = bullet.x - this.bulletSize.width / 2
         const bulletRight = bullet.x + this.bulletSize.width / 2
         const bulletTop = bullet.y - this.bulletSize.height / 2
         const bulletBottom = bullet.y + this.bulletSize.height / 2
 
+        // 敵と弾の当たり判定
         if (
           enemyLeft <= bulletRight &&
           bulletLeft <= enemyRight &&
           enemyTop <= bulletBottom &&
           bulletTop <= enemyBottom
         ) {
+          // 弾が的に触れてたら弾を消す
           hit = true
 
           return false
@@ -124,15 +157,37 @@ class Game extends QratchApp {
         return true
       })
 
-      return !hit
+      if (hit) {
+        // 敵と弾が触れてたらスコアを増やして、敵を消す
+        this.score++
+
+        return false
+      }
+
+      if (enemy.y > renderer.height + this.enemySize.height) {
+        this.isGameOver = true
+      } else {
+        // 敵を移動
+        enemy.y += this.enemySpeed
+      }
+
+      return true
+    })
+
+    this.bullets = this.bullets.filter((bullet) => {
+      // 弾の移動
+      bullet.y -= this.bulletSpeed
+
+      // 弾が画面上部にあたったら削除
+      return bullet.y > -this.bulletSize.height
     })
   }
 
   draw() {
-    const { drawer } = this
+    const { drawer, renderer } = this
 
     // 画面を黒く塗りつぶす
-    drawer.fillRect(0, 0, this.renderer.width, this.renderer.height, 'black')
+    drawer.fillRect(0, 0, renderer.width, renderer.height, 'black')
 
     // 弾を描画する
     this.bullets.forEach((bullet) => {
@@ -155,15 +210,44 @@ class Game extends QratchApp {
     })
 
     // 自機を描画する
-    // drawer.fillArc(this.pos, 16, 0, Math.PI * 2, 'white')
     drawer.fillPolygon(
       [
-        this.pos.getAdd(0, -this.playerSize),
-        this.pos.getAdd(-this.playerSize / 2, 0),
-        this.pos.getAdd(this.playerSize / 2, 0),
+        this.playerPos.getAdd(0, -this.playerSize),
+        this.playerPos.getAdd(-this.playerSize / 2, 0),
+        this.playerPos.getAdd(this.playerSize / 2, 0),
       ],
-      'white'
+      'blue'
     )
+
+    if (this.isGameOver) {
+      // ゲームオーバー画面を描画する
+      drawer.fillText(
+        'GameOver',
+        this.renderer.center().x,
+        this.renderer.center().x - 74,
+        'red',
+        void 0,
+        { size: '64px', font: 'sans-serif' },
+        'center'
+      )
+      drawer.fillText(
+        `score ${this.score}`,
+        this.renderer.center(),
+        'yellow',
+        void 0,
+        { size: '48px', font: 'sans-serif' },
+        'center'
+      )
+      drawer.fillText(
+        'press space key to restart',
+        this.renderer.center().x,
+        this.renderer.center().y + 64,
+        'white',
+        void 0,
+        { size: '24px', font: 'sans-serif' },
+        'center'
+      )
+    }
   }
 }
 
