@@ -4,6 +4,7 @@ import { HTMLElementKeyboard } from './HTMLElementKeyboard/HTMLElementKeyboard'
 import { HTMLElementMouse } from './HTMLElementMouse/HTMLElementMouse'
 import { Drawer } from './Drawer/Drawer'
 import { Vec2 } from './Vec2/Vec2'
+import { RequestAnimationFrameTicker } from './RequestAnimationFrameTicker/RequestAnimationFrameTicker'
 import { Color } from './Color/Color'
 
 const canvas = document.getElementById('canvas')
@@ -17,13 +18,11 @@ const c = new Drawer(r)
 const keyboard = new HTMLElementKeyboard(canvas)
 const cursor = new HTMLElementCursor(canvas)
 const mouse = new HTMLElementMouse(canvas)
-let count = 0
 let fpsCount = 0
 let fps = 0
 const pos = new Vec2(0, 0)
 
 const frame = () => {
-  count++
   fpsCount++
 
   if (keyboard.pressed('ArrowLeft')) {
@@ -38,12 +37,12 @@ const frame = () => {
     pos.y -= 1
   }
 
-  if (keyboard.pressed('Space')) {
+  if (keyboard.pressed('ArrowDown')) {
     pos.y += 1
   }
 
   c.fillRect(0, 0, 480, 480, 'white')
-  c.fillText(`${count}:${fps}`, 8, 16, 'rgba(0, 0, 0, 1)')
+  c.fillText(`${ticker.frames()}:${fps}`, 8, 16, 'black')
 
   pos.add(mouse.wheel() / 100)
 
@@ -58,11 +57,11 @@ const frame = () => {
   keyboard.onFrameEnd()
   cursor.onFrameEnd()
   mouse.onFrameEnd()
-  requestAnimationFrame(frame)
 }
 
-frame()
-console.log(Color)
+const ticker = new RequestAnimationFrameTicker()
+ticker.addCallback(frame)
+ticker.start()
 
 setInterval(() => {
   fps = fpsCount
