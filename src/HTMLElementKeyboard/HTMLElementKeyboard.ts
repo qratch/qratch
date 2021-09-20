@@ -47,7 +47,8 @@ export class HTMLElementKeyboard implements Keyboard {
       }
 
       const code = eventKeyToCode(event.key)
-      this.keyStates[code].isDown = true
+      this.keyStates[code].isDown = !event.repeat
+      this.keyStates[code].isUp = false
       this.keyStates[code].isPressed = true
     })
 
@@ -57,6 +58,7 @@ export class HTMLElementKeyboard implements Keyboard {
       }
 
       const code = eventKeyToCode(event.key)
+      this.keyStates[code].isDown = false
       this.keyStates[code].isUp = true
       this.keyStates[code].isPressed = false
     })
@@ -79,7 +81,6 @@ export class HTMLElementKeyboard implements Keyboard {
       this.keyStates[code] = {
         ...this.keyStates[code],
         isUp: false,
-        isDown: false,
       }
     }
   }
