@@ -1,7 +1,4 @@
-import { createCanvasAppOptions } from './Qratch/createCanvasAppOptions'
-import { QratchApp } from './Qratch/QratchApp'
-import { Size } from './Size/Size'
-import { Vec2 } from './Vec2/Vec2'
+import { createCanvasAppOptions, QratchApp, Size, Vec2 } from '.'
 
 class Game extends QratchApp {
   // 自機のスピード
@@ -112,7 +109,7 @@ class Game extends QratchApp {
       this.canShot = true
     }
 
-    // スペースが押されたら弾を発射
+    // スペースが押されたら弾を発射renderer
     if (keyboard.pressed('Space') && this.canShot) {
       this.bullets.push(new Vec2(this.playerPos))
       this.shotCounter = 0
