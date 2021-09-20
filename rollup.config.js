@@ -1,6 +1,7 @@
 import ts from '@wessberg/rollup-plugin-ts'
-import pkg from './package.json'
 import eslint from '@rollup/plugin-eslint'
+import { terser } from 'rollup-plugin-terser'
+import pkg from './package.json'
 import { builtinModules } from 'module'
 
 export default [
@@ -23,6 +24,7 @@ export default [
         name: 'Qratch',
         moduleName: 'Qratch',
         sourcemap: true,
+        plugins: [terser()],
       },
     ],
     plugins: [eslint(), ts()],
