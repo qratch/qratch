@@ -1,6 +1,7 @@
 import ts from '@wessberg/rollup-plugin-ts'
 import eslint from '@rollup/plugin-eslint'
 import { terser } from 'rollup-plugin-terser'
+import visualizer from 'rollup-plugin-visualizer'
 import pkg from './package.json'
 import { builtinModules } from 'module'
 
@@ -24,10 +25,14 @@ export default [
         name: 'Qratch',
         moduleName: 'Qratch',
         sourcemap: true,
-        plugins: [terser()],
+        plugins: [
+          visualizer({
+            filename: 'dist/umd/stats.html',
+          }),
+        ],
       },
     ],
-    plugins: [eslint(), ts()],
+    plugins: [eslint(), ts(), terser()],
     external: [
       ...builtinModules,
       ...(pkg.dependencies == null ? [] : Object.keys(pkg.dependencies)),
