@@ -1,6 +1,7 @@
 {
   "packages": [
-    "packages/qratch"
+    "packages/qratch",
+    "packages/vec2"
   ],
   "npmClient": "yarn",
   "useWorkspaces": true,
