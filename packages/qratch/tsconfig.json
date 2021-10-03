@@ -1,12 +1,6 @@
 {
+	"extends": "../../build-utils/tsconfig.base.json",
 	"compilerOptions": {
-		"strict": true,
-		"target": "es2017",
-		"module": "CommonJS",
-		"declaration": true,
-		"alwaysStrict": true,
-		"allowSyntheticDefaultImports": true,
-		"esModuleInterop": true,
 		"outDir": "dist",
 		"baseUrl": ".",
 		"paths": {
