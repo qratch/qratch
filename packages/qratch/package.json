@@ -7,7 +7,7 @@
     "type": "git",
     "url": "qratch/qratch"
   },
-  "main": "dist/qratch.min.js",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist/"
