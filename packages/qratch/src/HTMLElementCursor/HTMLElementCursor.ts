@@ -51,7 +51,7 @@ export class HTMLElementCursor implements Cursor {
   }
 
   getStyle(): CursorStyle {
-    return ((this.element.style as unknown) as CursorStyle) || 'auto'
+    return (this.element.style as unknown as CursorStyle) || 'auto'
   }
 
   onFrameEnd(): void {

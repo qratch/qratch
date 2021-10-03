@@ -6,7 +6,8 @@ type Characters<S extends string, O = ''> = S extends ''
 
 type Items<T extends { [x: number]: string }> = T[number]
 
-const ALPHABETS = 'abcdefghijklmnopqrstuvwxyz' as Characters<'abcdefghijklmnopqrstuvwxyz'>
+const ALPHABETS =
+  'abcdefghijklmnopqrstuvwxyz' as Characters<'abcdefghijklmnopqrstuvwxyz'>
 type Alphabets = typeof ALPHABETS
 
 // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values#modifier_keys
