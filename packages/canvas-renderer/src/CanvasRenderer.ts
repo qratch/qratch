@@ -1,10 +1,12 @@
-import { Pointable } from '@/Pointable/Pointable'
-import { Renderable } from '@/Renderer/Renderable'
-import { RenderLineCap } from '@/Renderer/RenderLineCap'
-import { RenderPolygonPoint } from '@/Renderer/RenderPolygonPoint'
-import { RenderStyle } from '@/Renderer/RenderStyle'
-import { RenderTextAlign } from '@/Renderer/RenderTextAlign'
-import { RenderTextBaseline } from '@/Renderer/RenderTextBaseline'
+import {
+  Pointable,
+  Renderable,
+  RenderLineCap,
+  RenderPolygonPoint,
+  RenderStyle,
+  RenderTextAlign,
+  RenderTextBaseline,
+} from 'qratch'
 
 /**
  * CanvasRenderer class.
