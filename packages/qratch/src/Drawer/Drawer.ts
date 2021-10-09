@@ -13,8 +13,7 @@ import { RenderTextAlign } from '@/Renderer/RenderTextAlign'
 import { RenderTextBaseline } from '@/Renderer/RenderTextBaseline'
 import { isRenderStylable } from '@/RenderStyleable/isRenderStylable'
 import { RenderStylable } from '@/RenderStyleable/RenderStylable'
-import { isSizeable } from '@/Size/isSizeable'
-import { Sizeable } from '@/Size/Sizeable'
+import { isSizeable, Sizeable } from '@/Sizeable'
 import { Drawable } from './Drawable'
 
 /**

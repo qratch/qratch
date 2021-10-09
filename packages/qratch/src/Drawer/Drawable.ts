@@ -7,7 +7,7 @@ import { RenderStyle } from '@/Renderer/RenderStyle'
 import { RenderTextAlign } from '@/Renderer/RenderTextAlign'
 import { RenderTextBaseline } from '@/Renderer/RenderTextBaseline'
 import { RenderStylable } from '@/RenderStyleable/RenderStylable'
-import { Sizeable } from '@/Size/Sizeable'
+import { Sizeable } from '@/Sizeable'
 
 /**
  * Drawable interface.

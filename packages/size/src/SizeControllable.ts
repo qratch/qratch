@@ -1,4 +1,4 @@
-import { Sizeable } from './Sizeable'
+import { Sizeable } from 'qratch'
 
 /**
  * SizeControllable interface.

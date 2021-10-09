@@ -1,5 +1,4 @@
-import { isSizeable } from './isSizeable'
-import { Sizeable } from './Sizeable'
+import { isSizeable, Sizeable } from 'qratch'
 import { SizeControllable } from './SizeControllable'
 
 /**
