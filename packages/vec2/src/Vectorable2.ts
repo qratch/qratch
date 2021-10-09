@@ -1,4 +1,4 @@
-import { Pointable } from '@/Pointable/Pointable'
+import { Pointable } from 'qratch'
 
 /**
  * Vectorable2 interface.

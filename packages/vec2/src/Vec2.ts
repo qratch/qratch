@@ -1,5 +1,4 @@
-import { isPointable } from '@/Pointable/isPointable'
-import { Pointable } from '@/Pointable/Pointable'
+import { Pointable, isPointable } from 'qratch'
 import { Vectorable2 } from './Vectorable2'
 
 /**
