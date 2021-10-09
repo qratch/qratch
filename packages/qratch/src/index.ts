@@ -1,4 +1,3 @@
-export * from './CanvasRenderer'
 export * from './Color'
 export * from './Component'
 export * from './ComponentManager'
