@@ -1,5 +1,4 @@
-import { Keyboard } from '@/Keyboard/Keyboard'
-import { KeyCode, KEY_CODES } from '@/Keyboard/KeyCode'
+import { Keyboard, KeyCode, KEY_CODES } from 'qratch'
 
 type KeyState = {
   isPressed: boolean
