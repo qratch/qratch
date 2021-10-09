@@ -1,4 +1,3 @@
-export * from './Color'
 export * from './Component'
 export * from './ComponentManager'
 export * from './Cursor'

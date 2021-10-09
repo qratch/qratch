@@ -1,4 +1,4 @@
-import { RenderStylable } from '@/RenderStyleable/RenderStylable'
+import { RenderStylable } from 'qratch'
 import { RGBA } from './RGBA'
 
 /**
