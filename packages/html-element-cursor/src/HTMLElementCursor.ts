@@ -1,6 +1,4 @@
-import { Cursor } from '@/Cursor/Cursor'
-import { CursorStyle } from '@/Cursor/CursorStyle'
-import { Pointable } from '@/Pointable/Pointable'
+import { Cursor, CursorStyle, Pointable } from 'qratch'
 
 /**
  * HTMLElementCursor class.
