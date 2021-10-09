@@ -1,4 +1,4 @@
-import { Ticker } from '@/Ticker/Ticker'
+import { Ticker } from 'qratch'
 
 /**
  * RequestAnimationFrameTicker class.
