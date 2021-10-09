@@ -1,5 +1,4 @@
-import { Mouse } from '@/Mouse/Mouse'
-import { MouseButtonCode, MOUSE_BUTTON_CODES } from '@/Mouse/MouseButtonCode'
+import { Mouse, MouseButtonCode, MOUSE_BUTTON_CODES } from 'qratch'
 
 type ButtonState = {
   isPressed: boolean
