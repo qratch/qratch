@@ -1,4 +1,4 @@
-import ts from '@wessberg/rollup-plugin-ts'
+import ts from 'rollup-plugin-ts'
 import eslint from '@rollup/plugin-eslint'
 import { terser } from 'rollup-plugin-terser'
 import { builtinModules } from 'module'
