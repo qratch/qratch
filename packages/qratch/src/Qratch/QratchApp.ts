@@ -54,7 +54,7 @@ export abstract class QratchApp {
    */
   constructor(options: QratchAppOptions) {
     // initialize component manager.
-    this.components = new ComponentManager()
+    this.components = new ComponentManager(this)
 
     // set default components.
     this.ticker = options.ticker
@@ -75,7 +75,7 @@ export abstract class QratchApp {
 
     // initialize application.
     this.init()
-    this.components.call('onInit')
+    this.components.call('init')
   }
 
   /**
@@ -84,18 +84,17 @@ export abstract class QratchApp {
   private startTicker(): void {
     this.ticker.addCallback(() => {
       // frame start.
-      this.components.call('onFrameStart')
+      this.components.call('beforeTick')
 
       // frame.
       this.frame()
 
       // frame end.
-      this.components.call('onFrameEnd')
+      this.components.call('tickEnded')
     })
 
     // ticker start.
     this.ticker.start()
-    this.components.call('onFrameTickerStart')
   }
 
   /**

@@ -1,29 +1,40 @@
+import { ComponentEvent } from '@/Component'
 import { Component } from '@/Component/Component'
+import { QratchApp } from '@/Qratch'
 import { ComponentManageable } from './ComponentManageable'
 
 /**
  * ComponentManager class.
  */
-export class ComponentManager implements ComponentManageable {
+export class ComponentManager<App extends QratchApp = QratchApp>
+  implements ComponentManageable
+{
   /**
    * components.
    */
-  private components: Component[] = []
+  private components: Component<App>[] = []
 
-  install(component: Component): void {
+  /**
+   * ComponentManager constructor.
+   *
+   * @param app the application.
+   */
+  constructor(protected app: App) {}
+
+  install(component: Component<App>): void {
     this.components.push(component)
 
-    if (component['onInstall']) {
-      component['onInstall']()
+    if (component.install) {
+      component.install(this.app)
     }
   }
 
-  call<T extends keyof Component>(method: T): void {
+  call<T extends keyof ComponentEvent>(method: T): void {
     for (const c of this.components) {
       const fn = c[method]
 
       if (fn) {
-        fn.call(c)
+        fn.bind(c)()
       }
     }
   }

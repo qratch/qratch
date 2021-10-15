@@ -52,7 +52,7 @@ export class HTMLElementCursor implements Cursor {
     return (this.element.style as unknown as CursorStyle) || 'auto'
   }
 
-  onFrameEnd(): void {
+  tickEnded(): void {
     this.dx = this.mx
     this.dy = this.my
   }

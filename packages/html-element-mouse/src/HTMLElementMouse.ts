@@ -86,7 +86,7 @@ export class HTMLElementMouse implements Mouse {
     return this.wheelValue
   }
 
-  onFrameEnd(): void {
+  tickEnded(): void {
     for (const code of MOUSE_BUTTON_CODES) {
       this.buttonStates[code] = {
         ...this.buttonStates[code],

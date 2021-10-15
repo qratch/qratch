@@ -75,7 +75,7 @@ export class HTMLElementKeyboard implements Keyboard {
     return this.keyStates[code].isDown ?? false
   }
 
-  onFrameEnd(): void {
+  tickEnded(): void {
     for (const code of KEY_CODES) {
       this.keyStates[code] = {
         ...this.keyStates[code],
