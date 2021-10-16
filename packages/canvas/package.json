@@ -1,5 +1,5 @@
 {
-  "name": "@qratch/request-animation-frame-ticker",
+  "name": "@qratch/canvas",
   "version": "0.0.0",
   "license": "MIT",
   "description": "",
@@ -61,5 +61,12 @@
       "^@/(.+)": "<rootDir>/src/$1"
     }
   },
-  "dependencies": {}
+  "dependencies": {
+    "@qratch/html-element-cursor": "^0.0.0",
+    "@qratch/html-element-keyboard": "^0.0.0",
+    "@qratch/html-element-mouse": "^0.0.0",
+    "@qratch/request-animation-frame-ticker": "^0.0.0",
+    "@qratch/canvas-renderer": "^0.0.0",
+    "qratch": "^0.0.2"
+  }
 }
