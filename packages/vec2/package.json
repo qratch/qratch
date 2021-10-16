@@ -61,5 +61,8 @@
     "moduleNameMapper": {
       "^@/(.+)": "<rootDir>/src/$1"
     }
+  },
+  "dependencies": {
+    "@qratch/copyable": "^0.0.0"
   }
 }

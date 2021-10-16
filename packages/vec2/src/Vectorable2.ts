@@ -1,9 +1,12 @@
 import { Pointable } from 'qratch'
+import { Copyable } from '@qratch/copyable'
 
 /**
  * Vectorable2 interface.
  */
-export interface Vectorable2 extends Pointable {
+export interface Vectorable2<T extends Copyable<T>>
+  extends Pointable,
+    Copyable<T> {
   /**
    * set the given elements to its own elements and returns this.
    *
@@ -201,4 +204,111 @@ export interface Vectorable2 extends Pointable {
    * @param value value.
    */
   getDiv(value: number): this
+
+  /**
+   * returns vector length.
+   */
+  length(): number
+  /**
+   * returns the inner product of the given vector.
+   *
+   * @param pos pos.
+   */
+  dot(pos: Pointable): number
+
+  /**
+   * returns the inner product of the given vector.
+   *
+   * @param x x.
+   * @param y y.
+   */
+  dot(x: number, y: number): number
+
+  /**
+   * returns the inner product of the given vector.
+   *
+   * @param value value.
+   */
+  dot(value: number): number
+
+  /**
+   * returns distance to given the vector.
+   *
+   * @param pos pos.
+   */
+  distance(pos: Pointable): number
+
+  /**
+   * returns distance to given the vector.
+   *
+   * @param x x.
+   * @param y y.
+   */
+  distance(x: number, y: number): number
+
+  /**
+   * returns distance to given the vector.
+   *
+   * @param value value.
+   */
+  distance(value: number): number
+
+  /**
+   * returns the radian angle to the given vector.
+   *
+   * @param pos pos.
+   */
+  angleTo(pos: Pointable): number
+
+  /**
+   * returns the radian angle to the given vector.
+   *
+   * @param x x.
+   * @param y y.
+   */
+  angleTo(x: number, y: number): number
+
+  /**
+   * returns normalized vector.
+   */
+  normalized(): Vectorable2<T>
+  /**
+   * returns whether is zero vector.
+   */
+  isZero(): boolean
+  /**
+   * clamp vector to the given min vector and the given max vector.
+   *
+   * @param minPoint minPoint.
+   * @param maxPoint maxPoint.
+   */
+  clamp(minPoint: Pointable, maxPoint: Pointable): this
+
+  /**
+   * clamp vector to the given min vector and the given max vector.
+   *
+   * @param minPoint minPoint.
+   * @param maxX maxX.
+   * @param maxY maxY.
+   */
+  clamp(minPoint: Pointable, maxX: number, maxY: number): this
+
+  /**
+   * clamp vector to the given min vector and the given max vector.
+   *
+   * @param minX minX.
+   * @param minY minY.
+   * @param maxPoint maxPoint.
+   */
+  clamp(minX: number, minY: number, maxPoint: Pointable): this
+
+  /**
+   * clamp vector to the given min vector and the given max vector.
+   *
+   * @param minX minX.
+   * @param minY minY.
+   * @param maxX maxX.
+   * @param maxY maxY.
+   */
+  clamp(minX: number, minY: number, maxX: number, maxY: number): this
 }
