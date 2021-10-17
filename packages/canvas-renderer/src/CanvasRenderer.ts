@@ -140,6 +140,36 @@ export class CanvasRenderer implements Renderable {
     this.context.stroke()
   }
 
+  fillCircle(
+    x: number,
+    y: number,
+    radius: number,
+    style: string,
+    anticlockwise?: boolean
+  ): void {
+    this.fillArc(x, y, radius, 0, Math.PI * 2, style, anticlockwise)
+  }
+
+  strokeCircle(
+    x: number,
+    y: number,
+    radius: number,
+    lineWidth: number,
+    style: string,
+    anticlockwise?: boolean
+  ): void {
+    this.strokeArc(
+      x,
+      y,
+      radius,
+      0,
+      Math.PI * 2,
+      lineWidth,
+      style,
+      anticlockwise
+    )
+  }
+
   fillEllipse(
     x: number,
     y: number,
