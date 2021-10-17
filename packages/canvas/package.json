@@ -1,6 +1,6 @@
 {
   "name": "@qratch/canvas",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "description": "",
   "repository": {
@@ -62,11 +62,11 @@
     }
   },
   "dependencies": {
+    "@qratch/canvas-renderer": "^0.0.1",
     "@qratch/html-element-cursor": "^0.0.0",
     "@qratch/html-element-keyboard": "^0.0.0",
     "@qratch/html-element-mouse": "^0.0.0",
     "@qratch/request-animation-frame-ticker": "^0.0.0",
-    "@qratch/canvas-renderer": "^0.0.0",
     "qratch": "^0.0.2"
   }
 }

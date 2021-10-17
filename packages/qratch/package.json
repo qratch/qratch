@@ -1,6 +1,6 @@
 {
   "name": "qratch",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "description": "[WIP] canvas grahpics library",
   "repository": {
@@ -60,6 +60,5 @@
     "moduleNameMapper": {
       "^@/(.+)": "<rootDir>/src/$1"
     }
-  },
-  "dependencies": {}
+  }
 }
