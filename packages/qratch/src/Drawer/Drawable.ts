@@ -1,12 +1,14 @@
-import { Fontable } from '@/Font/Fontable'
-import { Pointable } from '@/Pointable/Pointable'
-import { RenderImage } from '@/Renderer/RenderImage'
-import { RenderLineCap } from '@/Renderer/RenderLineCap'
-import { RenderPolygonPoint } from '@/Renderer/RenderPolygonPoint'
-import { RenderStyle } from '@/Renderer/RenderStyle'
-import { RenderTextAlign } from '@/Renderer/RenderTextAlign'
-import { RenderTextBaseline } from '@/Renderer/RenderTextBaseline'
-import { RenderStylable } from '@/RenderStyleable/RenderStylable'
+import { Fontable } from '@/Font'
+import { Pointable } from '@/Pointable'
+import {
+  RenderStyle,
+  RenderLineCap,
+  RenderPolygonPoint,
+  RenderTextAlign,
+  RenderTextBaseline,
+  RenderImage,
+} from '@/Renderer'
+import { RenderStylable } from '@/RenderStyleable'
 import { Sizeable } from '@/Sizeable'
 
 /**
@@ -566,6 +568,142 @@ export interface Drawable {
     radius: number,
     startAngle: number,
     endAngle: number,
+    lineWidth: number,
+    style: RenderStylable,
+    anticlockwise?: boolean
+  ): void
+
+  /**
+   * draw filled arc.
+   *
+   * @param pos pos.
+   * @param radius radius.
+   * @param style style.
+   * @param anticlockwise anticlockwise.
+   */
+  fillCircle(
+    pos: Pointable,
+    radius: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
+  ): void
+
+  /**
+   * draw filled arc.
+   *
+   * @param pos pos.
+   * @param radius radius.
+   * @param style style.
+   * @param anticlockwise anticlockwise.
+   */
+  fillCircle(
+    pos: Pointable,
+    radius: number,
+    style: RenderStylable,
+    anticlockwise?: boolean
+  ): void
+
+  /**
+   * draw filled arc.
+   *
+   * @param x x.
+   * @param y y.
+   * @param radius radius.
+   * @param style style.
+   * @param anticlockwise anticlockwise.
+   */
+  fillCircle(
+    x: number,
+    y: number,
+    radius: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
+  ): void
+
+  /**
+   * draw filled arc.
+   *
+   * @param x x.
+   * @param y y.
+   * @param radius radius.
+   * @param style style.
+   * @param anticlockwise anticlockwise.
+   */
+  fillCircle(
+    x: number,
+    y: number,
+    radius: number,
+    style: RenderStylable,
+    anticlockwise?: boolean
+  ): void
+
+  /**
+   * draw stroked arc.
+   *
+   * @param pos pos.
+   * @param radius radius.
+   * @param lineWidth lineWidth.
+   * @param style style.
+   * @param anticlockwise anticlockwise.
+   */
+  strokeCircle(
+    pos: Pointable,
+    radius: number,
+    lineWidth: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
+  ): void
+
+  /**
+   * draw stroked arc.
+   *
+   * @param pos pos.
+   * @param radius radius.
+   * @param lineWidth lineWidth.
+   * @param style style.
+   * @param anticlockwise anticlockwise.
+   */
+  strokeCircle(
+    pos: Pointable,
+    radius: number,
+    lineWidth: number,
+    style: RenderStylable,
+    anticlockwise?: boolean
+  ): void
+
+  /**
+   * draw stroked arc.
+   *
+   * @param x x.
+   * @param y y.
+   * @param radius radius.
+   * @param lineWidth lineWidth.
+   * @param style style.
+   * @param anticlockwise anticlockwise.
+   */
+  strokeCircle(
+    x: number,
+    y: number,
+    radius: number,
+    lineWidth: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
+  ): void
+
+  /**
+   * draw stroked arc.
+   *
+   * @param x x.
+   * @param y y.
+   * @param radius radius.
+   * @param lineWidth lineWidth.
+   * @param style style.
+   * @param anticlockwise anticlockwise.
+   */
+  strokeCircle(
+    x: number,
+    y: number,
+    radius: number,
     lineWidth: number,
     style: RenderStylable,
     anticlockwise?: boolean

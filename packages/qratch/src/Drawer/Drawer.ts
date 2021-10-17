@@ -1,20 +1,18 @@
-import { Fontable } from '@/Font/Fontable'
-import { fontableToString } from '@/Font/fontableToString'
-import { isFontable } from '@/Font/isFontable'
-import { isPointable } from '@/Pointable/isPointable'
-import { Pointable } from '@/Pointable/Pointable'
-import { isRenderImage } from '@/Renderer/isRenderImage'
-import { Renderable } from '@/Renderer/Renderable'
-import { RenderImage } from '@/Renderer/RenderImage'
-import { RenderLineCap } from '@/Renderer/RenderLineCap'
-import { RenderPolygonPoint } from '@/Renderer/RenderPolygonPoint'
-import { RenderStyle } from '@/Renderer/RenderStyle'
-import { RenderTextAlign } from '@/Renderer/RenderTextAlign'
-import { RenderTextBaseline } from '@/Renderer/RenderTextBaseline'
-import { isRenderStylable } from '@/RenderStyleable/isRenderStylable'
-import { RenderStylable } from '@/RenderStyleable/RenderStylable'
-import { isSizeable, Sizeable } from '@/Sizeable'
-import { Drawable } from './Drawable'
+import { Fontable, isFontable, fontableToString } from '@/Font'
+import { Pointable, isPointable } from '@/Pointable'
+import {
+  Renderable,
+  RenderStyle,
+  RenderLineCap,
+  RenderPolygonPoint,
+  RenderTextAlign,
+  RenderTextBaseline,
+  RenderImage,
+  isRenderImage,
+} from '@/Renderer'
+import { RenderStylable, isRenderStylable } from '@/RenderStyleable'
+import { Sizeable, isSizeable } from '@/Sizeable'
+import { Drawable } from '.'
 
 /**
  * Drawer class.
@@ -1096,6 +1094,278 @@ export class Drawer implements Drawable {
 
     throw new TypeError(
       this.constructor.name + '.strokeArc: invalid arguments.'
+    )
+  }
+
+  fillCircle(
+    pos: Pointable,
+    radius: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
+  ): void
+
+  fillCircle(
+    pos: Pointable,
+    radius: number,
+    style: RenderStylable,
+    anticlockwise?: boolean
+  ): void
+
+  fillCircle(
+    x: number,
+    y: number,
+    radius: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
+  ): void
+
+  fillCircle(
+    x: number,
+    y: number,
+    radius: number,
+    style: RenderStylable,
+    anticlockwise?: boolean
+  ): void
+
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  fillCircle(
+    ...args:
+      | [
+          pos: Pointable,
+          radius: number,
+          style: RenderStyle,
+          anticlockwise?: boolean
+        ]
+      | [
+          pos: Pointable,
+          radius: number,
+          style: RenderStylable,
+          anticlockwise?: boolean
+        ]
+      | [
+          x: number,
+          y: number,
+          radius: number,
+          style: RenderStyle,
+          anticlockwise?: boolean
+        ]
+      | [
+          x: number,
+          y: number,
+          radius: number,
+          style: RenderStylable,
+          anticlockwise?: boolean
+        ]
+  ) {
+    if (
+      isPointable(args[0]) &&
+      typeof args[1] === 'number' &&
+      typeof args[2] === 'string' &&
+      (typeof args[3] === 'boolean' || typeof args[3] === 'undefined')
+    ) {
+      this.renderer.fillCircle(
+        args[0].x,
+        args[0].y,
+        args[1],
+        args[2] as RenderStyle,
+        args[3]
+      )
+      return
+    }
+    if (
+      isPointable(args[0]) &&
+      typeof args[1] === 'number' &&
+      isRenderStylable(args[2]) &&
+      (typeof args[3] === 'boolean' || typeof args[3] === 'undefined')
+    ) {
+      this.renderer.fillCircle(
+        args[0].x,
+        args[0].y,
+        args[1],
+        args[2].toRenderStyle(),
+        args[3]
+      )
+      return
+    }
+    if (
+      typeof args[0] === 'number' &&
+      typeof args[1] === 'number' &&
+      typeof args[2] === 'number' &&
+      typeof args[3] === 'string' &&
+      (typeof args[4] === 'boolean' || typeof args[4] === 'undefined')
+    ) {
+      this.renderer.fillCircle(
+        args[0],
+        args[1],
+        args[2],
+        args[3] as RenderStyle,
+        args[4]
+      )
+      return
+    }
+    if (
+      typeof args[0] === 'number' &&
+      typeof args[1] === 'number' &&
+      typeof args[2] === 'number' &&
+      isRenderStylable(args[3]) &&
+      (typeof args[4] === 'boolean' || typeof args[4] === 'undefined')
+    ) {
+      this.renderer.fillCircle(
+        args[0],
+        args[1],
+        args[2],
+        args[3].toRenderStyle(),
+        args[4]
+      )
+      return
+    }
+
+    throw new TypeError(
+      this.constructor.name + '.fillCircle: invalid arguments.'
+    )
+  }
+
+  strokeCircle(
+    pos: Pointable,
+    radius: number,
+    lineWidth: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
+  ): void
+
+  strokeCircle(
+    pos: Pointable,
+    radius: number,
+    lineWidth: number,
+    style: RenderStylable,
+    anticlockwise?: boolean
+  ): void
+
+  strokeCircle(
+    x: number,
+    y: number,
+    radius: number,
+    lineWidth: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
+  ): void
+
+  strokeCircle(
+    x: number,
+    y: number,
+    radius: number,
+    lineWidth: number,
+    style: RenderStylable,
+    anticlockwise?: boolean
+  ): void
+
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  strokeCircle(
+    ...args:
+      | [
+          pos: Pointable,
+          radius: number,
+          lineWidth: number,
+          style: RenderStyle,
+          anticlockwise?: boolean
+        ]
+      | [
+          pos: Pointable,
+          radius: number,
+          lineWidth: number,
+          style: RenderStylable,
+          anticlockwise?: boolean
+        ]
+      | [
+          x: number,
+          y: number,
+          radius: number,
+          lineWidth: number,
+          style: RenderStyle,
+          anticlockwise?: boolean
+        ]
+      | [
+          x: number,
+          y: number,
+          radius: number,
+          lineWidth: number,
+          style: RenderStylable,
+          anticlockwise?: boolean
+        ]
+  ) {
+    if (
+      isPointable(args[0]) &&
+      typeof args[1] === 'number' &&
+      typeof args[2] === 'number' &&
+      typeof args[3] === 'string' &&
+      (typeof args[4] === 'boolean' || typeof args[4] === 'undefined')
+    ) {
+      this.renderer.strokeCircle(
+        args[0].x,
+        args[0].y,
+        args[1],
+        args[2],
+        args[3] as RenderStyle,
+        args[4]
+      )
+      return
+    }
+    if (
+      isPointable(args[0]) &&
+      typeof args[1] === 'number' &&
+      typeof args[2] === 'number' &&
+      isRenderStylable(args[3]) &&
+      (typeof args[4] === 'boolean' || typeof args[4] === 'undefined')
+    ) {
+      this.renderer.strokeCircle(
+        args[0].x,
+        args[0].y,
+        args[1],
+        args[2],
+        args[3].toRenderStyle(),
+        args[4]
+      )
+      return
+    }
+    if (
+      typeof args[0] === 'number' &&
+      typeof args[1] === 'number' &&
+      typeof args[2] === 'number' &&
+      typeof args[3] === 'number' &&
+      typeof args[4] === 'string' &&
+      (typeof args[5] === 'boolean' || typeof args[5] === 'undefined')
+    ) {
+      this.renderer.strokeCircle(
+        args[0],
+        args[1],
+        args[2],
+        args[3],
+        args[4] as RenderStyle,
+        args[5]
+      )
+      return
+    }
+    if (
+      typeof args[0] === 'number' &&
+      typeof args[1] === 'number' &&
+      typeof args[2] === 'number' &&
+      typeof args[3] === 'number' &&
+      isRenderStylable(args[4]) &&
+      (typeof args[5] === 'boolean' || typeof args[5] === 'undefined')
+    ) {
+      this.renderer.strokeCircle(
+        args[0],
+        args[1],
+        args[2],
+        args[3],
+        args[4].toRenderStyle(),
+        args[5]
+      )
+      return
+    }
+
+    throw new TypeError(
+      this.constructor.name + '.strokeCircle: invalid arguments.'
     )
   }
 

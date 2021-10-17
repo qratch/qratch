@@ -135,6 +135,42 @@ export interface Renderable extends Component {
   ): void
 
   /**
+   * draw filled circle.
+   *
+   * @param x x position.
+   * @param y y position.
+   * @param radius radius.
+   * @param style style.
+   * @param anticlockwise anticlockwise.
+   */
+  fillCircle(
+    x: number,
+    y: number,
+    radius: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
+  ): void
+
+  /**
+   * draw stroked circle.
+   *
+   * @param x x position.
+   * @param y y position.
+   * @param radius radius.
+   * @param lineWidth line width.
+   * @param style style.
+   * @param anticlockwise anticlockwise.
+   */
+  strokeCircle(
+    x: number,
+    y: number,
+    radius: number,
+    lineWidth: number,
+    style: RenderStyle,
+    anticlockwise?: boolean
+  ): void
+
+  /**
    * draw filled arc.
    *
    * @param x x position.
